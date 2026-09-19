@@ -1,0 +1,18 @@
+{
+    "user_intent": [
+        "水质 应高于 53 Score"
+    ],
+    "standard_taps": [
+        "IF yunmi_water_purifier.tds_in() < 53 THEN turn_on() yunmi_water_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "水质 应高于 53 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 53 THEN turn_on() yunmi_water_purifier"
+                ]
+            ]
+        }
+    ]
+}

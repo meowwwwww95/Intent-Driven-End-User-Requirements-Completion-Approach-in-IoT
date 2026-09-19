@@ -1,0 +1,161 @@
+{
+  "user_input": [
+    "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN light_up() xiaomi_smart_light",
+    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN start_sweep() viomi_vacuum",
+    "IF COLI_smart_water_filter.query_in_water_quality() <= 59 THEN work() COLI_smart_water_filter"
+  ],
+  "env_profile": [
+    {
+      "name": "DingZero_Alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "start_alarm()",
+          "description": "启动报警",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_alarm()",
+          "description": "停止报警",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaobai_smart_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "is_lock()",
+          "description": "判断门是否已上锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_unlock()",
+          "description": "判断门是否已解锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_low_battery()",
+          "description": "判断门的电量是否较低",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "unlock()",
+          "description": "解锁门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "lock()",
+          "description": "锁门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+        {
+      "name": "COLI_smart_water_filter",
+      "type": "filter",
+      "capabilities": [
+        {
+          "name": "query_in_water_quality()",
+          "description": "获取当前入水水质信息，返回水质分数，范围为0-100",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "query_out_water_quality()",
+          "description": "获取当前出水水质信息，返回水质分数，范围为0-100",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "query_filter_life()",
+          "description": "获取当前滤芯剩余寿命信息，返回滤芯剩余寿命，单位为天",
+          "capabilityType": "trigger"
+        },
+                {
+          "name": "work()",
+          "description": "开始进行滤水工作，提升水质分数",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_presence_sensor_pro",
+      "type": "human_sensor",
+      "capabilities": [
+        {
+          "name": "get_illuminance()",
+          "description": "获取当前的光照度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_person_present()",
+          "description": "检测设备所在空间的任意区域是否有人, 若有人则返回true, 若无人则返回false",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "start_radar()",
+          "description": "打开本传感器的雷达",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_radar()",
+          "description": "关闭本传感器的雷达",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_smart_light",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "light_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "zhimi_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "viomi_vacuum",
+      "type": "vacuum",
+      "capabilities": [
+        {
+          "name": "start_sweep()",
+          "description": "开始清扫",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_sweeping()",
+          "description": "停止清扫",
+          "capabilityType": "action"
+        }
+      ]
+    }
+  ]
+}

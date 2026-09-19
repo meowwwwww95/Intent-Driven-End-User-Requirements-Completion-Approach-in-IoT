@@ -1,0 +1,280 @@
+{
+  "user_input": [
+    "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light",
+    "IF mijia_air_purifier_MAX.get_PM2_5() > 54 THEN turn_on() mijia_air_purifier_MAX",
+    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() < 36 THEN turn_on() zhimi_humidifier",
+    "IF generic_hood_version_1.reading() > 0.05 THEN power_on() generic_hood_version_1"
+  ],
+  "env_profile": [
+    {
+      "name": "mijia_air_purifier",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_1()",
+          "description": "调至1挡",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_2()",
+          "description": "调至2挡",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_3()",
+          "description": "调至3挡",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "mijia_air_purifier_MAX",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "get_PM2_5()",
+          "description": "获取当前的PM2.5数值",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_on()",
+          "description": "开机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_screen_light()",
+          "description": "屏幕调至亮光",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off_screen_light()",
+          "description": "关屏幕灯光",
+          "capabilityType": "action"
+        },
+        {
+          "name": "switch_to_sleep_mode()",
+          "description": "调至睡眠模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "switch_to_auto_mode()",
+          "description": "调至自动模式",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "DingZero_Alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "start_alarm()",
+          "description": "启动报警",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_alarm()",
+          "description": "停止报警",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaobai_smart_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "is_lock()",
+          "description": "判断门是否已上锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_unlock()",
+          "description": "判断门是否已解锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_low_battery()",
+          "description": "判断门的电量是否较低",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "unlock()",
+          "description": "解锁门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "lock()",
+          "description": "锁门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+        {
+      "name": "generic_hood_version_1",
+      "type": "hood",
+      "capabilities": [
+        {
+          "name": "power_on()",
+          "description": "打开抽油烟机，开始降低环境油烟浓度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "power_off()",
+          "description": "关闭抽油烟机，停止降低环境油烟浓度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_fan_speed(level)",
+          "description": "设置风速档位（level为1-3），1为低速，2为中速，3为高速，影响抽油烟的运行效率",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_on()",
+          "description": "打开照明灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_off()",
+          "description": "关闭照明灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "reading()",
+          "description": "返回油烟浓度，以%为单位",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_presence_sensor_pro",
+      "type": "human_sensor",
+      "capabilities": [
+        {
+          "name": "get_illuminance()",
+          "description": "获取当前的光照度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_person_present()",
+          "description": "检测设备所在空间的任意区域是否有人, 若有人则返回true, 若无人则返回false",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "start_radar()",
+          "description": "打开本传感器的雷达",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_radar()",
+          "description": "关闭本传感器的雷达",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "zhimi_humidifier",
+      "type": "humidifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开加湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭加湿器",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_LED_light",
+      "type": "light",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_to_red()",
+          "description": "将色温调整至红色",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_to_green()",
+          "description": "将色温调整至绿色",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_to_blue()",
+          "description": "将色温调整至蓝色",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_to_white()",
+          "description": "将色温调整至白色",
+          "capabilityType": "action"
+        },
+        {
+          "name": "brightness_plus()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "brightness_minus()",
+          "description": "降低亮度",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "zhimi_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "sprite_temperature_humidity_sensor_KD30",
+      "type": "temperature_sensor",
+      "capabilities": [
+        {
+          "name": "get_temperature()",
+          "description": "获取当前的温度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "get_humidity()",
+          "description": "获取当前的湿度",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

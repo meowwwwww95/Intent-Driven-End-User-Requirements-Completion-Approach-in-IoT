@@ -1,0 +1,66 @@
+{
+  "user_input": [
+    "IF aqara_sound_sensor.reading() < 42 THEN turn_high_volume() X_stereo",
+    "IF viomi_hood.reading() > 8 THEN power_on() viomi_hood"
+  ],
+  "env_profile": [
+    {
+      "name": "viomi_hood",
+      "type": "hood",
+      "capabilities": [
+        {
+          "name": "power_on()",
+          "description": "打开抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "power_off()",
+          "description": "关闭抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "reading()",
+          "description": "返回油烟浓度，以%为单位",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "X_stereo",
+      "type": "stereo",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开立体声",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭立体声",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_high_volume()",
+          "description": "将立体声的音量调高",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_low_volume()",
+          "description": "将立体声的音量调低",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_sound_sensor",
+      "type": "volume_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的音量，单位为dB",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

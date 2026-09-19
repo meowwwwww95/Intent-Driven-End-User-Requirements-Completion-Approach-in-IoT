@@ -1,0 +1,20 @@
+{
+    "user_intent": [
+        "期望 湿度 处于 30 % 到 40%"
+    ],
+    "standard_taps": [
+        "IF xiaomi_humidity_sensor.relative_humidity() > 40 THEN turn_on() xiaomi_dehumidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() < 30 THEN turn_on() zhimi_humidifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 湿度 处于 30 % 到 40%",
+            "realization_taps": [
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 40 THEN turn_on() xiaomi_dehumidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 30 THEN turn_on() zhimi_humidifier"
+                ]
+            ]
+        }
+    ]
+}

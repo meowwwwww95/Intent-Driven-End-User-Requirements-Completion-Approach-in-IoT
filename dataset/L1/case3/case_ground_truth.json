@@ -1,0 +1,30 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 128 lux",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF wotie_brightness_sensor.brightness() < 128 AND aqara_human_sensor.reading() != 人离开 THEN brightness_up() wotie_brightness_sensor",
+        "IF wotie_brightness_sensor.brightness() > 128 AND aqara_human_sensor.reading() != 人离开 THEN brightness_down() wotie_brightness_sensor",
+        "IF aqara_human_sensor.reading() == 人离开 THEN light_off() wotie_brightness_sensor"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 128 lux",
+            "realization_taps": [
+                [
+                    "IF wotie_brightness_sensor.brightness() < 128 AND aqara_human_sensor.reading() != 人离开 THEN brightness_up() wotie_brightness_sensor",
+                    "IF wotie_brightness_sensor.brightness() > 128 AND aqara_human_sensor.reading() != 人离开 THEN brightness_down() wotie_brightness_sensor"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN light_off() wotie_brightness_sensor"
+                ]
+            ]
+        }
+    ]
+}

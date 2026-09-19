@@ -1,0 +1,38 @@
+{
+    "user_intent": [
+        "IF 人不在家 THEN 清洁环境",
+        "油烟浓度 应低于 1 %",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum",
+        "IF viomi_hood.reading() > 1 AND aqara_human_sensor.reading() != 人离开 THEN power_on() viomi_hood",
+        "IF aqara_human_sensor.reading() == 人离开 THEN power_off() viomi_hood"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 1 %",
+            "realization_taps": [
+                [
+                    "IF viomi_hood.reading() > 1 AND aqara_human_sensor.reading() != 人离开 THEN power_on() viomi_hood"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN power_off() viomi_hood"
+                ]
+            ]
+        }
+    ]
+}

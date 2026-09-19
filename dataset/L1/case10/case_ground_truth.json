@@ -1,0 +1,30 @@
+{
+    "user_intent": [
+        "期望 温度 处于 27 ℃ 到 31 ℃",
+        "如果发生火灾，那么打开逃生通道"
+    ],
+    "standard_taps": [
+        "IF aqara_temperature_sensor.reading() > 31 THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 27 THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 温度 处于 27 ℃ 到 31 ℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() > 31 THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 27 THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+                ]
+            ]
+        }
+    ]
+}

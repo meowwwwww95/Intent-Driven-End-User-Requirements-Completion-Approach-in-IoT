@@ -1,0 +1,40 @@
+{
+    "user_intent": [
+        "期望 声音 处于 27 dB 到 40 dB",
+        "水质 应高于 93 Score",
+        "如果发生火灾，那么开始报警"
+    ],
+    "standard_taps": [
+        "IF aqara_sound_sensor.reading() > 40 THEN set_volume_low() xiaomi_television",
+        "IF aqara_sound_sensor.reading() < 27 THEN set_volume_high() xiaomi_television",
+        "IF yunmi_water_purifier.tds_in() < 93 THEN filter_water() yunmi_water_purifier",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 声音 处于 27 dB 到 40 dB",
+            "realization_taps": [
+                [
+                    "IF aqara_sound_sensor.reading() > 40 THEN set_volume_low() xiaomi_television",
+                    "IF aqara_sound_sensor.reading() < 27 THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 93 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 93 THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        }
+    ]
+}

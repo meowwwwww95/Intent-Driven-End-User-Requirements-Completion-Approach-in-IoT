@@ -1,0 +1,52 @@
+{
+    "user_intent": [
+        "二氧化碳浓度 应 低于 1%",
+        "水质 应高于 52 Score",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF carbonDioxide_monitor.reading() >= 0.01 AND aqara_motion_sensor.motion_state() == true THEN turn_on() oxygen_machine",
+        "IF yunmi_water_purifier.tds_in() < 57 AND aqara_motion_sensor.motion_state() == true THEN filter_water() yunmi_water_purifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_air_fresh",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_dehumidifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_diffuser",
+        "IF aqara_motion_sensor.motion_state() == false THEN power_off() viomi_hood",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() oxygen_machine"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "二氧化碳浓度 应 低于 1%",
+            "realization_taps": [
+                [
+                    "IF carbonDioxide_monitor.reading() >= 0.01 AND aqara_motion_sensor.motion_state() == true THEN turn_on() oxygen_machine"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 52 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 57 AND aqara_motion_sensor.motion_state() == true THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_air_fresh",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_dehumidifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_diffuser",
+                    "IF aqara_motion_sensor.motion_state() == false THEN power_off() viomi_hood",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() oxygen_machine"
+                ]
+            ]
+        }
+    ]
+}

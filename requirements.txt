@@ -1,0 +1,7 @@
+fastapi==0.116.1
+networkx==3.4.2
+openai==1.98.0
+openpyxl==3.1.5
+python-dotenv==1.0.1
+uvicorn==0.35.0
+z3-solver==4.15.3.0

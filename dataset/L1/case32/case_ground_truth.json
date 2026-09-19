@@ -1,0 +1,28 @@
+{
+    "user_intent": [
+        "空气质量 应 高于 70 Score",
+        "如果发生火灾，那么开始报警"
+    ],
+    "standard_taps": [
+        "IF qingping_air_monitor.reading_PM2_5() < 70 THEN turn_on() zhimi_air_fresh",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "空气质量 应 高于 70 Score",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_PM2_5() < 70 THEN turn_on() zhimi_air_fresh"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        }
+    ]
+}

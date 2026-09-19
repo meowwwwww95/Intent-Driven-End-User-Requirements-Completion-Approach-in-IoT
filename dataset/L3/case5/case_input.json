@@ -1,0 +1,158 @@
+{
+  "user_input": [
+    "IF wotie_brightness_sensor.brightness() < 887 THEN brightness_up() wotie_brightness_sensor",
+    "IF aqara_temperature_sensor.reading() > 23 THEN turn_cool_on() xiaomi_air_conditioner",
+    "IF xiaomi_humidity_sensor.relative_humidity() > 66 THEN turn_on() xiaomi_dehumidifier"
+  ],
+  "env_profile": [
+    {
+      "name": "xiaomi_air_conditioner",
+      "type": "air_conditioner",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到“制冷模式”、“制热模式”或是“已关闭”",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_cool_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_heat_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "wotie_brightness_sensor",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "brightness_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "brightness_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_dehumidifier",
+      "type": "dehumidifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开除湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭除湿器",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "chuangmi_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_humidity_sensor",
+      "type": "humidity_sensor",
+      "capabilities": [
+        {
+          "name": "relative_humidity()",
+          "description": "可以获取到当前的湿度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_temperature_sensor",
+      "type": "temperature_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的温度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_human_sensor",
+      "type": "human_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "检测屋内是否有人，如果有人则返回'人在家'，无人则返回'人离开'",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 增加 亮度",
+        "期望 温度 处于 25 ℃",
+        "空气质量 应 高于 57 Score",
+        "期望 湿度 处于 29 % 到 40 %",
+        "油烟浓度 应低于 8 %",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_motion_sensor.motion_state() == true THEN turn_light_up() philips_zhiyi_light",
+        "IF qingping_air_monitor.reading_temperature() > 25 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_cool() smart_inverter_air_conditioner",
+        "IF qingping_air_monitor.reading_temperature() < 25 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_heat() smart_inverter_air_conditioner",
+        "IF sprite_temperature_humidity_sensor_KD30.get_temperature() > 25 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_cool() smart_inverter_air_conditioner",
+        "IF sprite_temperature_humidity_sensor_KD30.get_temperature() < 25 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_heat() smart_inverter_air_conditioner",
+        "IF qingping_air_monitor.reading_PM2_5() > 57 AND aqara_motion_sensor.motion_state() == true THEN turn_on() mijia_air_purifier",
+        "IF sprite_temperature_humidity_sensor_KD30.get_humidity() > 40 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_dehumidify() smart_inverter_air_conditioner",
+        "IF sprite_temperature_humidity_sensor_KD30.get_humidity() < 29 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier",
+        "IF qingping_air_monitor.reading_humidity() > 40 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_dehumidify() smart_inverter_air_conditioner",
+        "IF qingping_air_monitor.reading_humidity() < 29 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier",
+        "IF generic_hood_version_1.reading() > 0.08 AND aqara_motion_sensor.motion_state() == true THEN power_on() generic_hood_version_1",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector",
+        "IF LG_fire_detector.is_fire() == true THEN open_door() Blade_Star_smart_door",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_light_off() philips_zhiyi_light",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() smart_inverter_air_conditioner",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() mijia_air_purifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN power_off() generic_hood_version_1"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 增加 亮度",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == true THEN turn_light_up() philips_zhiyi_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 25 ℃",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_temperature() > 25 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_cool() smart_inverter_air_conditioner",
+                    "IF qingping_air_monitor.reading_temperature() < 25 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_heat() smart_inverter_air_conditioner"
+                ],
+                [
+                    "IF sprite_temperature_humidity_sensor_KD30.get_temperature() > 25 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_cool() smart_inverter_air_conditioner",
+                    "IF sprite_temperature_humidity_sensor_KD30.get_temperature() < 25 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_heat() smart_inverter_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "空气质量 应 高于 57 Score",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_PM2_5() > 57 AND aqara_motion_sensor.motion_state() == true THEN turn_on() mijia_air_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 湿度 处于 29 % 到 40 %",
+            "realization_taps": [
+                [
+                    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() > 40 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_dehumidify() smart_inverter_air_conditioner",
+                    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() < 29 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier"
+                ],
+                [
+                    "IF qingping_air_monitor.reading_humidity() > 40 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_dehumidify() smart_inverter_air_conditioner",
+                    "IF qingping_air_monitor.reading_humidity() < 29 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 8 %",
+            "realization_taps": [
+                [
+                    "IF generic_hood_version_1.reading() > 0.08 AND aqara_motion_sensor.motion_state() == true THEN power_on() generic_hood_version_1"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN open_door() Blade_Star_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_light_off() philips_zhiyi_light",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() smart_inverter_air_conditioner",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() mijia_air_purifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN power_off() generic_hood_version_1"
+                ]
+            ]
+        }
+    ]
+}

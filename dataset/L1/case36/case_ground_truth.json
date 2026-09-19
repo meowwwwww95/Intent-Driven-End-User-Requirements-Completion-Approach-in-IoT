@@ -1,0 +1,40 @@
+{
+    "user_intent": [
+        "PM2.5浓度 应 低于 166",
+        "期望 声音 处于 68 dB",
+        "如果发生火灾，那么开始报警"
+    ],
+    "standard_taps": [
+        "IF miaomiao_air_monitor.reading(pm2.5Density) >= 166 THEN turn_on() zhimi_air_fresh",
+        "IF aqara_sound_sensor.reading() > 68 THEN set_volume_low() xiaomi_television",
+        "IF aqara_sound_sensor.reading() < 68 THEN set_volume_high() xiaomi_television",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "PM2.5浓度 应 低于 166",
+            "realization_taps": [
+                [
+                    "IF miaomiao_air_monitor.reading(pm2.5Density) >= 166 THEN turn_on() zhimi_air_fresh"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 声音 处于 68 dB",
+            "realization_taps": [
+                [
+                    "IF aqara_sound_sensor.reading() > 68 THEN set_volume_low() xiaomi_television",
+                    "IF aqara_sound_sensor.reading() < 68 THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        }
+    ]
+}

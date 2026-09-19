@@ -1,0 +1,56 @@
+{
+  "user_input": [
+    "IF xiaomi_volume_sensor.reading() > 29 THEN motor_control(2) babai_curtain"
+  ],
+  "env_profile": [
+    {
+      "name": "babai_curtain",
+      "type": "curtain",
+      "capabilities": [
+        {
+          "name": "motor_control(position)",
+          "description": "控制窗帘到指定位置，1为打开，2为关闭",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "chuangmi_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_volume_sensor",
+      "type": "volume_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的音量，单位为dB",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

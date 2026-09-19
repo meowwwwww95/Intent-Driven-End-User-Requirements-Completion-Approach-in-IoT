@@ -1,0 +1,28 @@
+{
+    "user_intent": [
+        "PM2.5浓度 应 低于 197",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF qingping_air_monitor.reading_PM2_5() < 197 THEN turn_on() zhimi_air_fresh",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() zhimi_air_fresh"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "PM2.5浓度 应 低于 197",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_PM2_5() < 197 THEN turn_on() zhimi_air_fresh"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() zhimi_air_fresh"
+                ]
+            ]
+        }
+    ]
+}

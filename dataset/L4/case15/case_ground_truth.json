@@ -1,0 +1,128 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 664 lux",
+        "期望 温度 处于 16 ℃ 到 26 ℃",
+        "PM2.5浓度 应 低于 60",
+        "期望 湿度 处于 20 %",
+        "IF 人不在家 THEN 清洁环境",
+        "如果 人在家 那么 提高环境香味",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF xiaomi_brightness_guard.brightness() < 664 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light",
+        "IF xiaomi_brightness_guard.brightness() > 664 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_minus() aqara_LED_light",
+        "IF xiaomi_presence_sensor_pro.get_illuminance() < 664 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light",
+        "IF xiaomi_presence_sensor_pro.get_illuminance() > 664 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_minus() aqara_LED_light",
+        "IF sprite_temperature_humidity_sensor_KD30.get_temperature() > 26 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on_natural_fan() mijia_natural_fan",
+        "IF sprite_temperature_humidity_sensor_KD30.get_temperature() < 16 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on_high_mode() yunmi_AI_heater",
+        "IF mijia_air_purifier_MAX.get_PM2_5() > 60 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX",
+        "IF mijia_air_purifier_MAX.get_PM2_5() > 60 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier",
+        "IF sprite_temperature_humidity_sensor_KD30.get_humidity() > 20 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() deerma_dehumidifier",
+        "IF sprite_temperature_humidity_sensor_KD30.get_humidity() < 20 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() deerma_humidifier",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_on_vacuum() whykid_vacuum",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() xiaomi_diffuser",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() aqara_LED_light",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_fan_off() mijia_natural_fan",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() yunmi_AI_heater",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() deerma_humidifier",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() deerma_dehumidifier",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_diffuser",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 664 lux",
+            "realization_taps": [
+                [
+                    "IF xiaomi_brightness_guard.brightness() < 664 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light",
+                    "IF xiaomi_brightness_guard.brightness() > 664 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_minus() aqara_LED_light"
+                ],
+                [
+                    "IF xiaomi_presence_sensor_pro.get_illuminance() < 664 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light",
+                    "IF xiaomi_presence_sensor_pro.get_illuminance() > 664 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_minus() aqara_LED_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 16 ℃ 到 26 ℃",
+            "realization_taps": [
+                [
+                    "IF sprite_temperature_humidity_sensor_KD30.get_temperature() > 26 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on_natural_fan() mijia_natural_fan",
+                    "IF sprite_temperature_humidity_sensor_KD30.get_temperature() < 16 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on_high_mode() yunmi_AI_heater"
+                ]
+            ]
+        },
+        {
+            "user_intent": "PM2.5浓度 应 低于 60",
+            "realization_taps": [
+                [
+                    "IF mijia_air_purifier_MAX.get_PM2_5() > 60 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX"
+                ],
+                [
+                    "IF mijia_air_purifier_MAX.get_PM2_5() > 60 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 湿度 处于 20 %",
+            "realization_taps": [
+                [
+                    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() > 20 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() deerma_dehumidifier",
+                    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() < 20 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() deerma_humidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_on_vacuum() whykid_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果 人在家 那么 提高环境香味",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() xiaomi_diffuser"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() aqara_LED_light",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_fan_off() mijia_natural_fan",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() yunmi_AI_heater",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() deerma_humidifier",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() deerma_dehumidifier",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_diffuser",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier"
+                ]
+            ]
+        }
+    ]
+}

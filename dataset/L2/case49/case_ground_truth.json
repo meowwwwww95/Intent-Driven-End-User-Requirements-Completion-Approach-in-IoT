@@ -1,0 +1,58 @@
+{
+    "user_intent": [
+        "期望 声音 处于 48 dB 到 69 dB",
+        "期望 湿度 处于 21 %",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_sound_sensor.reading() > 69 AND aqara_motion_sensor.motion_state() == true THEN set_volume_low() xiaomi_television",
+        "IF aqara_sound_sensor.reading() < 48 AND aqara_motion_sensor.motion_state() == true THEN set_volume_high() xiaomi_television",
+        "IF xiaomi_humidity_sensor.relative_humidity() > 21 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_dehumidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() < 21 AND aqara_motion_sensor.motion_state() == true THEN turn_off() xiaomi_dehumidifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_air_fresh",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_dehumidifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_diffuser",
+        "IF aqara_motion_sensor.motion_state() == false THEN power_off() viomi_hood",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off xiaomi_television",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off xiaomi_dehumidifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 声音 处于 48 dB 到 69 dB",
+            "realization_taps": [
+                [
+                    "IF aqara_sound_sensor.reading() > 69 AND aqara_motion_sensor.motion_state() == true THEN set_volume_low() xiaomi_television",
+                    "IF aqara_sound_sensor.reading() < 48 AND aqara_motion_sensor.motion_state() == true THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 湿度 处于 21 %",
+            "realization_taps": [
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 21 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_dehumidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 21 AND aqara_motion_sensor.motion_state() == true THEN turn_off() xiaomi_dehumidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_air_fresh",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_dehumidifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_diffuser",
+                    "IF aqara_motion_sensor.motion_state() == false THEN power_off() viomi_hood",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off xiaomi_television",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off xiaomi_dehumidifier"
+                ]
+            ]
+        }
+    ]
+}

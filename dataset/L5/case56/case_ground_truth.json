@@ -1,0 +1,165 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 增加 亮度",
+        "期望 温度 处于 21 ℃",
+        "空气质量 应 高于 77 Score",
+        "期望 声音 处于 28 dB",
+        "期望 湿度 处于 61 % 到 68 %",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN light_up() xiaomi_smart_light",
+        "IF aqara_motion_sensor.motion_state() == true THEN light_up() xiaomi_smart_light",
+        "IF aqara_temperature_sensor.reading() > 21 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 21 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() > 21 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 21 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_temperature() > 21 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_temperature() < 21 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_temperature() > 21 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_temperature() < 21 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_PM2_5() < 77 AND aqara_human_sensor.reading() == 人在家 THEN turn_on() zhimi_air_fresh",
+        "IF qingping_air_monitor.reading_PM2_5() < 77 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_air_fresh",
+        "IF xiaomi_volume_sensor.reading() > 28 AND aqara_human_sensor.reading() == 人在家 THEN motor_control(2) babai_curtain",
+        "IF xiaomi_volume_sensor.reading() < 28 AND aqara_human_sensor.reading() == 人在家 THEN motor_control(1) babai_curtain",
+        "IF xiaomi_volume_sensor.reading() > 28 AND aqara_motion_sensor.motion_state() == true THEN motor_control(2) babai_curtain",
+        "IF xiaomi_volume_sensor.reading() < 28 AND aqara_motion_sensor.motion_state() == true THEN motor_control(1) babai_curtain",
+        "IF xiaomi_humidity_sensor.relative_humidity() > 68 AND aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_dehumidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() < 61 AND aqara_human_sensor.reading() == 人在家 THEN turn_on() zhimi_humidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() > 68 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_dehumidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() < 61 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier",
+        "IF qingping_air_monitor.reading_humidity() > 68 AND aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_dehumidifier",
+        "IF qingping_air_monitor.reading_humidity() < 61 AND aqara_human_sensor.reading() == 人在家 THEN turn_on() zhimi_humidifier",
+        "IF qingping_air_monitor.reading_humidity() > 68 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_dehumidifier",
+        "IF qingping_air_monitor.reading_humidity() < 61 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector",
+        "IF LG_fire_detector.is_fire() == true THEN unlock() xiaobai_smart_door",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_smart_light",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_air_fresh",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_dehumidifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier",
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() xiaomi_smart_light",
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() xiaomi_air_conditioner",
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() zhimi_air_fresh",
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() xiaomi_dehumidifier",
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() zhimi_humidifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 增加 亮度",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN light_up() xiaomi_smart_light"
+                ],
+                [
+                    "IF aqara_motion_sensor.motion_state() == true THEN light_up() xiaomi_smart_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 21 ℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() > 21 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 21 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner"
+                ],
+                [
+                    "IF aqara_temperature_sensor.reading() > 21 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 21 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner"
+                ],
+                [
+                    "IF qingping_air_monitor.reading_temperature() > 21 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF qingping_air_monitor.reading_temperature() < 21 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner"
+                ],
+                [
+                    "IF qingping_air_monitor.reading_temperature() > 21 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF qingping_air_monitor.reading_temperature() < 21 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "空气质量 应 高于 77 Score",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_PM2_5() < 77 AND aqara_human_sensor.reading() == 人在家 THEN turn_on() zhimi_air_fresh"
+                ],
+                [
+                    "IF qingping_air_monitor.reading_PM2_5() < 77 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_air_fresh"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 声音 处于 28 dB",
+            "realization_taps": [
+                [
+                    "IF xiaomi_volume_sensor.reading() > 28 AND aqara_motion_sensor.motion_state() == true THEN motor_control(2) babai_curtain",
+                    "IF xiaomi_volume_sensor.reading() < 28 AND aqara_motion_sensor.motion_state() == true THEN motor_control(1) babai_curtain"
+                ],
+                [
+                    "IF xiaomi_volume_sensor.reading() > 28 AND aqara_human_sensor.reading() == 人在家 THEN motor_control(2) babai_curtain",
+                    "IF xiaomi_volume_sensor.reading() < 28 AND aqara_human_sensor.reading() == 人在家 THEN motor_control(1) babai_curtain"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 湿度 处于 61 % 到 68 %",
+            "realization_taps": [
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 68 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_dehumidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 61 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier"
+                ],
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 68 AND aqara_human_sensor.reading() == 人在家 THEN turn_off() xiaomi_dehumidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 61 AND aqara_human_sensor.reading() == 人在家 THEN turn_off() zhimi_humidifier"
+                ],
+                [
+                    "IF qingping_air_monitor.reading_humidity() > 68 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_dehumidifier",
+                    "IF qingping_air_monitor.reading_humidity() < 61 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier"
+                ],
+                [
+                    "IF qingping_air_monitor.reading_humidity() > 68 AND aqara_human_sensor.reading() == 人在家 THEN turn_off() xiaomi_dehumidifier",
+                    "IF qingping_air_monitor.reading_humidity() < 61 AND aqara_human_sensor.reading() == 人在家 THEN turn_off() zhimi_humidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() AND xiaobai_smart_door.is_lock() THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() xiaomi_smart_light",
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() xiaomi_air_conditioner",
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() zhimi_air_fresh",
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() xiaomi_dehumidifier",
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_off() zhimi_humidifier"
+                ],
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_smart_light",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_air_fresh",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_dehumidifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier"
+                ]
+            ]
+        }
+    ]
+}

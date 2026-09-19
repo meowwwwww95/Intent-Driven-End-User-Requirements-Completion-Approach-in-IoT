@@ -1,0 +1,28 @@
+{
+    "user_input": [
+        "IF mijia_water_heater.reading() < 70 THEN heat_up() mijia_water_heater"
+    ],
+    "env_profile": [
+        {
+            "name": "mijia_water_heater",
+            "type": "water_heater",
+            "capabilities": [
+                {
+                    "name": "reading()",
+                    "description": "可以获取到当前的水温",
+                    "capabilityType": "trigger"
+                },
+                {
+                    "name": "heat_up()",
+                    "description": "加热水温",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_off()",
+                    "description": "关闭",
+                    "capabilityType": "action"
+                }
+            ]
+        }
+    ]
+}

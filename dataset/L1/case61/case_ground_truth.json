@@ -1,0 +1,18 @@
+{
+    "user_intent": [
+        "如果 门外有人 那么 发出提醒"
+    ],
+    "standard_taps": [
+        "IF aqara_smart_lock.stranger_detection() == true THEN remind() aqara_smart_lock"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 门外有人 那么 发出提醒",
+            "realization_taps": [
+                [
+                    "IF aqara_smart_lock.stranger_detection() == true THEN remind() aqara_smart_lock"
+                ]
+            ]
+        }
+    ]
+}

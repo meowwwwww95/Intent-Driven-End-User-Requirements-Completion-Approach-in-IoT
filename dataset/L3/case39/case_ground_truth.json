@@ -1,0 +1,66 @@
+{
+    "user_intent": [
+        "PM2.5浓度 应 低于 51",
+        "油烟浓度 应低于 12 %",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF mijia_air_purifier_MAX.get_PM2_5() > 51 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX",
+        "IF mijia_air_purifier_MAX.get_PM2_5() > 51 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier",
+        "IF generic_hood_version_1.reading() > 0.12 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN power_on() generic_hood_version_1",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN power_off() generic_hood_version_1",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "PM2.5浓度 应 低于 51",
+            "realization_taps": [
+                [
+                    "IF mijia_air_purifier_MAX.get_PM2_5() > 51 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX"
+                ],
+                [
+                    "IF mijia_air_purifier_MAX.get_PM2_5() > 51 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 12 %",
+            "realization_taps": [
+                [
+                    "IF generic_hood_version_1.reading() > 0.12 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN power_on() generic_hood_version_1"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN power_off() generic_hood_version_1",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier"
+                ]
+            ]
+        }
+    ]
+}

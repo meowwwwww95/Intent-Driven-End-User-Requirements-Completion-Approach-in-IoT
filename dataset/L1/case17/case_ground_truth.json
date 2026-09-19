@@ -1,0 +1,30 @@
+{
+    "user_intent": [
+        "期望 声音 处于 45 dB 到 65 dB",
+        "油烟浓度 应低于 8 %"
+    ],
+    "standard_taps": [
+        "IF aqara_sound_sensor.reading() < 45 THEN turn_high_volume() X_stereo",
+        "IF aqara_sound_sensor.reading() > 65 THEN turn_low_volume() X_stereo",
+        "IF viomi_hood.reading() > 8 THEN power_on() viomi_hood"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 声音 处于 45 dB 到 65 dB",
+            "realization_taps": [
+                [
+                    "IF aqara_sound_sensor.reading() < 45 THEN turn_high_volume() X_stereo",
+                    "IF aqara_sound_sensor.reading() > 65 THEN turn_low_volume() X_stereo"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 8 %",
+            "realization_taps": [
+                [
+                    "IF viomi_hood.reading() > 8 THEN power_on() viomi_hood"
+                ]
+            ]
+        }
+    ]
+}

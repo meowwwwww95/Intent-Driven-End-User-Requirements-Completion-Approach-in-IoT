@@ -1,0 +1,43 @@
+{
+  "user_input": [
+    "IF yunmi_water_purifier.tds_in() < 53 THEN turn_on() yunmi_water_purifier"
+  ],
+  "env_profile": [
+    {
+      "name": "yunmi_water_purifier",
+      "type": "filter",
+      "capabilities": [
+        {
+          "name": "get_temperature()",
+          "description": "获取当前水温信息",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "tds_in()",
+          "description": "获取当前入水水质信息，百分制，分数越高，水质越好",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "tds_out()",
+          "description": "获取当前出水水质信息，百分制，分数越高，水质越好",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "filter_life()",
+          "description": "获取当前滤芯剩余寿命信息，百分制，分数越高，代表剩余寿命越长",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "heat_water()",
+          "description": "加热水",
+          "capabilityType": "action"
+        },
+        {
+          "name": "filter_water()",
+          "description": "过滤水，提高水质",
+          "capabilityType": "action"
+        }
+      ]
+    }
+  ]
+}

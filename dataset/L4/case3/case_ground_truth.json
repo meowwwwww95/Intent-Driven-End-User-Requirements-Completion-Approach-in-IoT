@@ -1,0 +1,98 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 增加 亮度",
+        "空气质量 应 高于 50 Score",
+        "期望 声音 处于 58 dB 到 78 dB",
+        "水质 应高于 58 Score",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light",
+        "IF xiaomi_air_quality_sensor_pro.get_air_score() < 50 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX",
+        "IF xiaomi_air_quality_sensor.get_air_score() < 50 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX",
+        "IF xiaomi_air_quality_sensor_pro.get_air_score() < 50 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier",
+        "IF xiaomi_air_quality_sensor.get_air_score() < 50 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier",
+        "IF xiaomi_volume_sensor.reading() > 78 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_low() xiaomi_television",
+        "IF xiaomi_volume_sensor.reading() < 58 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_high() xiaomi_television",
+        "IF COLI_smart_water_filter.query_in_water_quality() <= 58 THEN work() COLI_smart_water_filter",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() aqara_LED_light",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_television",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 增加 亮度",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "空气质量 应 高于 50 Score",
+            "realization_taps": [
+                [
+                    "IF xiaomi_air_quality_sensor_pro.get_air_score() < 50 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX"
+                ],
+                [
+                    "IF xiaomi_air_quality_sensor.get_air_score() < 50 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX"
+                ],
+                [
+                    "IF xiaomi_air_quality_sensor_pro.get_air_score() < 50 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier"
+                ],
+                [
+                    "IF xiaomi_air_quality_sensor.get_air_score() < 50 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 声音 处于 58 dB 到 78 dB",
+            "realization_taps": [
+                [
+                    "IF xiaomi_volume_sensor.reading() > 78 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_low() xiaomi_television",
+                    "IF xiaomi_volume_sensor.reading() < 58 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 58 Score",
+            "realization_taps": [
+                [
+                    "IF COLI_smart_water_filter.query_in_water_quality() <= 58 THEN work() COLI_smart_water_filter"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() aqara_LED_light",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_television",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier"
+                ]
+            ]
+        }
+    ]
+}

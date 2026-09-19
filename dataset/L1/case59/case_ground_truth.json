@@ -1,0 +1,28 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 播放音乐",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() X_stereo",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() X_stereo"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 播放音乐",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() X_stereo"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() X_stereo"
+                ]
+            ]
+        }
+    ]
+}

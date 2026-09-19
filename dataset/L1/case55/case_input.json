@@ -1,0 +1,65 @@
+{
+  "user_input": [
+    "IF wotie_brightness_sensor.brightness() < 465 THEN brightness_up() wotie_brightness_sensor"
+  ],
+  "env_profile": [
+    {
+      "name": "wotie_brightness_sensor",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "brightness_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "brightness_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "chuangmi_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

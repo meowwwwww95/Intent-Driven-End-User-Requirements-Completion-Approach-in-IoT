@@ -1,0 +1,48 @@
+{
+    "user_intent": [
+        "PM2.5浓度 应 低于 41",
+        "IF 人不在家 THEN 清洁环境",
+        "如果发生火灾，那么开始报警",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF miaomiao_air_monitor.reading(pm2.5Density) >= 41 AND aqara_human_sensor.reading() != 人离开 THEN turn_on() zhimi_air_fresh",
+        "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm",
+        "IF aqara_human_sensor.reading() != 人在家 THEN turn_off() zhimi_air_fresh"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "PM2.5浓度 应 低于 41",
+            "realization_taps": [
+                [
+                    "IF miaomiao_air_monitor.reading(pm2.5Density) >= 41 AND aqara_human_sensor.reading() != 人离开 THEN turn_on() zhimi_air_fresh"
+                ]
+            ]
+        },
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() != 人在家 THEN turn_off() zhimi_air_fresh"
+                ]
+            ]
+        }
+    ]
+}

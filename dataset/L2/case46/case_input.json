@@ -1,0 +1,99 @@
+{
+  "user_input": [
+    "IF aqara_sound_sensor.reading() > 49 THEN set_volume_low() xiaomi_television",
+    "IF xiaomi_humidity_sensor.relative_humidity() > 42 THEN turn_on() xiaomi_dehumidifier"
+  ],
+  "env_profile": [
+    {
+      "name": "aqara_alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_dehumidifier",
+      "type": "dehumidifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开除湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭除湿器",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_humidity_sensor",
+      "type": "humidity_sensor",
+      "capabilities": [
+        {
+          "name": "relative_humidity()",
+          "description": "可以获取到当前的湿度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_television",
+      "type": "television",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开电视",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭电视",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_volume_high()",
+          "description": "将电视的音量调高",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_volume_low()",
+          "description": "将电视的音量调低",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_sound_sensor",
+      "type": "volume_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的音量，单位为dB",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

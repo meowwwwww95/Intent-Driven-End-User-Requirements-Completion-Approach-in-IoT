@@ -1,0 +1,34 @@
+# 忽略所有 Python 编译缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 忽略所有的输入和输出case
+input/
+output/
+input_*/
+output_*/
+
+# 忽略所有的日志文件
+logs/
+
+# 忽略所有的测试文件
+test/
+.pytest_cache/
+
+# 忽略所有的临时文件
+temp/
+
+finish/
+
+# 忽略所有的临时文件
+temp/
+finish/
+
+.env
+
+samples/
+
+docs/
+
+TODOLIST

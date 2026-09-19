@@ -1,0 +1,18 @@
+{
+    "user_intent": [
+        "IF 人不在家 THEN 清洁环境"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == '人离开' THEN start_sweep() viomi_vacuum"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == '人离开' THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        }
+    ]
+}

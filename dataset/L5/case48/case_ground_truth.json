@@ -1,0 +1,130 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 610 lux",
+        "期望 温度 处于 20℃",
+        "PM2.5浓度 应 低于 80",
+        "期望 声音 处于 29 dB 到 37 dB",
+        "IF 人不在家 THEN 清洁环境",
+        "如果 人在家 那么 提高环境香味",
+        "油烟浓度 应低于 10 %",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF LG_brightness_sensor.get_brightness() < 610 AND aqara_human_sensor.reading() == 人在家 THEN light_up() xiaomi_smart_light",
+        "IF LG_brightness_sensor.get_brightness() > 610 AND aqara_human_sensor.reading() == 人在家 THEN light_down() xiaomi_smart_light",
+        "IF aqara_temperature_sensor.reading() > 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_temperature() > 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_temperature() < 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_PM2_5() > 80 AND  aqara_human_sensor.reading() == 人在家 THEN turn_on() zhimi_air_fresh",
+        "IF xiaomi_volume_sensor.reading() > 37 AND aqara_human_sensor.reading() == 人在家 THEN set_volume_low() xiaomi_television",
+        "IF xiaomi_volume_sensor.reading() < 29 AND aqara_human_sensor.reading() == 人在家 THEN set_volume_high() xiaomi_television",
+        "IF aqara_human_sensor.reading() == 人离开 THEN start_sweep() viomi_vacuum",
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_diffuser",
+        "IF aqara_smoke_sensor.reading() >= 0.1 AND aqara_human_sensor.reading() == 人在家 THEN power_on() viomi_hood",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_smart_light",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_conditioner",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() zhimi_air_fresh",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_television",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() viomi_hood",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_diffuser"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 610 lux",
+            "realization_taps": [
+                [
+                    "IF LG_brightness_sensor.get_brightness() < 610 AND aqara_human_sensor.reading() == 人在家 THEN light_up() xiaomi_smart_light",
+                    "IF LG_brightness_sensor.get_brightness() > 610 AND aqara_human_sensor.reading() == 人在家 THEN light_down() xiaomi_smart_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 20℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() > 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner"
+                ],
+                [
+                    "IF qingping_air_monitor.reading_temperature() > 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF qingping_air_monitor.reading_temperature() < 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "PM2.5浓度 应 低于 80",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_PM2_5() > 80 AND  aqara_human_sensor.reading() == 人在家 THEN turn_on() zhimi_air_fresh"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 声音 处于 29 dB 到 37 dB",
+            "realization_taps": [
+                [
+                    "IF xiaomi_volume_sensor.reading() > 37 AND aqara_human_sensor.reading() == 人在家 THEN set_volume_low() xiaomi_television",
+                    "IF xiaomi_volume_sensor.reading() < 29 AND aqara_human_sensor.reading() == 人在家 THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        },
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果 人在家 那么 提高环境香味",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_diffuser"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 10 %",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() >= 0.1 AND aqara_human_sensor.reading() == 人在家 THEN power_on() viomi_hood"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_smart_light",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_conditioner",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() zhimi_air_fresh",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_television",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() viomi_hood",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_diffuser"
+                ]
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "user_intent": [
+        "期望 湿度 处于 65 % 到 86 %",
+        "如果 人在家 那么 提高环境香味",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF xiaomi_humidity_sensor.relative_humidity() > 86 AND aqara_human_sensor.reading() != 人离开 THEN turn_on() xiaomi_dehumidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() < 65 AND aqara_human_sensor.reading() != 人离开 THEN turn_off() xiaomi_dehumidifier",
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_diffuser",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_dehumidifier",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_diffuser"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 湿度 处于 65 % 到 86 %",
+            "realization_taps": [
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 86 AND aqara_human_sensor.reading() != 人离开 THEN turn_on() xiaomi_dehumidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 65 AND aqara_human_sensor.reading() != 人离开 THEN turn_off() xiaomi_dehumidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果 人在家 那么 提高环境香味",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_diffuser"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_dehumidifier",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_diffuser"
+                ]
+            ]
+        }
+    ]
+}

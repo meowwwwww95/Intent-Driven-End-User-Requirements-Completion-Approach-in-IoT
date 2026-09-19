@@ -1,0 +1,52 @@
+{
+  "user_input": [
+    "如果 人在家 那么 提高环境香味",
+    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm",
+    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+  ],
+  "env_profile": [
+    {
+      "name": "aqara_alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "chuangmi_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

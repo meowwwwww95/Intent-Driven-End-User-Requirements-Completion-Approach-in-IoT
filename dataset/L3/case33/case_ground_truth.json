@@ -1,0 +1,60 @@
+{
+    "user_intent": [
+        "期望 湿度 处于 41 % 到 54 %",
+        "水质 应高于 65 Score",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF sprite_temperature_humidity_sensor_KD30.get_humidity() > 54 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_off() zhimi_humidifier",
+        "IF sprite_temperature_humidity_sensor_KD30.get_humidity() < 41 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() zhimi_humidifier",
+        "IF COLI_smart_water_filter.query_in_water_quality() <= 65 THEN work() COLI_smart_water_filter",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() zhimi_humidifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 湿度 处于 41 % 到 54 %",
+            "realization_taps": [
+                [
+                    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() > 54 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_off() zhimi_humidifier",
+                    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() < 41 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() zhimi_humidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 65 Score",
+            "realization_taps": [
+                [
+                    "IF COLI_smart_water_filter.query_in_water_quality() <= 65 THEN work() COLI_smart_water_filter"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() zhimi_humidifier"
+                ]
+            ]
+        }
+    ]
+}

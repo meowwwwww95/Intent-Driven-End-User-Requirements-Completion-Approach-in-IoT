@@ -1,0 +1,71 @@
+{
+  "user_input": [
+    "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_smart_light"
+  ],
+  "env_profile": [
+    {
+      "name": "chuangmi_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_smart_light",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "light_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_human_sensor",
+      "type": "human_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "检测屋内是否有人，如果有人则返回'人在家'，无人则返回'人离开'",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

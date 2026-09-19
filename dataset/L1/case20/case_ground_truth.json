@@ -1,0 +1,30 @@
+{
+    "user_intent": [
+        "期望 湿度 处于 73 %",
+        "水质 应高于 76 Score"
+    ],
+    "standard_taps": [
+        "IF xiaomi_humidity_sensor.relative_humidity() > 73 THEN turn_on() xiaomi_dehumidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() < 73 THEN turn_off() xiaomi_dehumidifier",
+        "IF yunmi_water_purifier.tds_in() < 76 THEN filter_water() yunmi_water_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 湿度 处于 73 %",
+            "realization_taps": [
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 73 THEN turn_on() xiaomi_dehumidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 73 THEN turn_off() xiaomi_dehumidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 76 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 76 THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        }
+    ]
+}

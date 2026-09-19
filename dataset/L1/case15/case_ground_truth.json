@@ -1,0 +1,30 @@
+{
+    "user_intent": [
+        "期望 声音 处于 42 dB 到 46 dB",
+        "水质 应高于 60 Score"
+    ],
+    "standard_taps": [
+        "IF aqara_sound_sensor.reading() < 42 THEN turn_high_volume() X_stereo",
+        "IF aqara_sound_sensor.reading() > 46 THEN turn_low_volume() X_stereo",
+        "IF yunmi_water_purifier.tds_in() < 60 THEN filter_water() yunmi_water_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 声音 处于 42 dB 到 46 dB",
+            "realization_taps": [
+                [
+                    "IF aqara_sound_sensor.reading() < 42 THEN turn_high_volume() X_stereo",
+                    "IF aqara_sound_sensor.reading() > 46 THEN turn_low_volume() X_stereo"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 60 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 60 THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 192 lux",
+        "期望 温度 处于 23 ℃",
+        "PM2.5浓度 应 低于 84",
+        "期望 声音 处于 60 dB 到 70 dB",
+        "IF 人不在家 THEN 清洁环境",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF LG_brightness_sensor.get_brightness() < 192 AND aqara_motion_sensor.motion_state() == true THEN turn_light_up() philips_zhiyi_light",
+        "IF LG_brightness_sensor.get_brightness() > 192 AND aqara_motion_sensor.motion_state() == true THEN turn_light_down() philips_zhiyi_light",
+        "IF qingping_air_monitor.reading_temperature() > 23 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_cool() smart_inverter_air_conditioner",
+        "IF qingping_air_monitor.reading_temperature() < 19 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_heat() smart_inverter_air_conditioner",
+        "IF qingping_air_monitor.reading_PM2_5() > 84 AND aqara_motion_sensor.motion_state() == true THEN turn_on() mijia_air_purifier",
+        "IF xiaomi_volume_sensor.reading() > 70 AND aqara_motion_sensor.motion_state() == true THEN turn_low_volume() X_stereo",
+        "IF xiaomi_volume_sensor.reading() < 60 AND aqara_motion_sensor.motion_state() == true THEN turn_high_volume() X_stereo",
+        "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector",
+        "IF LG_fire_detector.is_fire() == true THEN open_door() Blade_Star_smart_door",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_light_off() philips_zhiyi_light",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() smart_inverter_air_conditioner",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() mijia_air_purifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() X_stereo"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 192 lux",
+            "realization_taps": [
+                [
+                    "IF LG_brightness_sensor.get_brightness() < 192 AND aqara_motion_sensor.motion_state() == true THEN turn_light_up() philips_zhiyi_light",
+                    "IF LG_brightness_sensor.get_brightness() > 192 AND aqara_motion_sensor.motion_state() == true THEN turn_light_down() philips_zhiyi_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 23 ℃",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_temperature() > 23 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_cool() smart_inverter_air_conditioner",
+                    "IF qingping_air_monitor.reading_temperature() < 19 AND aqara_motion_sensor.motion_state() == true THEN set_mode_to_heat() smart_inverter_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "PM2.5浓度 应 低于 84",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_PM2_5() > 84 AND aqara_motion_sensor.motion_state() == true THEN turn_on() mijia_air_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 声音 处于 60 dB 到 70 dB",
+            "realization_taps": [
+                [
+                    "IF xiaomi_volume_sensor.reading() > 70 AND aqara_motion_sensor.motion_state() == true THEN turn_low_volume() X_stereo",
+                    "IF xiaomi_volume_sensor.reading() < 60 AND aqara_motion_sensor.motion_state() == true THEN turn_high_volume() X_stereo"
+                ]
+            ]
+        },
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN open_door() Blade_Star_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_light_off() philips_zhiyi_light",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() smart_inverter_air_conditioner",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() mijia_air_purifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() X_stereo"
+                ]
+            ]
+        }
+    ]
+}

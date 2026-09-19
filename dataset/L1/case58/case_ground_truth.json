@@ -1,0 +1,18 @@
+{
+    "user_intent": [
+        "如果 人不在家 那么 关闭房门"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() chuangmi_door"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人不在家 那么 关闭房门",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() chuangmi_door"
+                ]
+            ]
+        }
+    ]
+}

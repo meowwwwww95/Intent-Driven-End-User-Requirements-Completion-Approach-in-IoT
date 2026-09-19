@@ -1,0 +1,393 @@
+{
+  "user_input": [
+    "IF wotie_brightness_sensor.brightness() < 725 THEN brightness_up() wotie_brightness_sensor",
+    "IF aqara_temperature_sensor.reading() > 23 THEN set_mode_to_cool() smart_inverter_air_conditioner",
+    "IF mijia_CO2_ultra_sensor.get_CO2_concentration() > 20 THEN turn_on() zhimi_air_fresh",
+    "IF aqara_motion_sensor.motion_state() == true THEN set_volume_low() xiaomi_television",
+    "IF xiaomi_humidity_sensor.relative_humidity() < 35 THEN turn_on() zhimi_humidifier",
+    "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum",
+    "IF aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_diffuser"
+  ],
+  "env_profile": [
+    {
+      "name": "smart_inverter_air_conditioner",
+      "type": "air_conditioner",
+      "capabilities": [
+        {
+          "name": "get_status()",
+          "description": "获取空调当前状态，包括是否开启、模式、风速、温度等",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_on()",
+          "description": "开启空调",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭空调",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_swing_mode()",
+          "description": "打开空调上下摆风",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off_swing_mode()",
+          "description": "关闭空调上下摆风",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_auto()",
+          "description": "将空调风速调至自动档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_one()",
+          "description": "将空调风速调至一档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_two()",
+          "description": "将空调风速调至二档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_three()",
+          "description": "将空调风速调至三档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_four()",
+          "description": "将空调风速调至四档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_five()",
+          "description": "将空调风速调至五档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_six()",
+          "description": "将空调风速调至六档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_seven()",
+          "description": "将空调风速调至七档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_cool()",
+          "description": "将空调模式设置成制冷",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_heat()",
+          "description": "将空调模式设置成制热",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_dehumidify()",
+          "description": "将空调模式设置成除湿",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_fan()",
+          "description": "将空调模式设置成风扇",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_sleep()",
+          "description": "将空调模式设置成睡眠",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_comfort()",
+          "description": "将空调模式设置成舒适",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_air_conditioner",
+      "type": "air_conditioner",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到“制冷模式”、“制热模式”或是“已关闭”",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_cool_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_heat_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "zhimi_air_fresh",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开启空气净化器以提高空气质量",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭空气净化器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "above_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否高于指定浓度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "below_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否低于指定浓度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_on_mute_mode()",
+          "description": "调至静音模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_strong_wind_mode()",
+          "description": "调至强风模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_intelligent_mode()",
+          "description": "调至智能模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_manual_mode()",
+          "description": "调至手动模式",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "wotie_brightness_sensor",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "brightness_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "brightness_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "mijia_CO2_ultra_sensor",
+      "type": "CO2_sensor",
+      "capabilities": [
+        {
+          "name": "get_CO2_concentration()",
+          "description": "获取当前CO2浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_diffuser",
+      "type": "diffuser",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开香氛机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭香氛机",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaobai_smart_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "is_lock()",
+          "description": "判断门是否已上锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_unlock()",
+          "description": "判断门是否已解锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_low_battery()",
+          "description": "判断门的电量是否较低",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "unlock()",
+          "description": "解锁门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "lock()",
+          "description": "锁门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "zhimi_humidifier",
+      "type": "humidifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开加湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭加湿器",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_humidity_sensor",
+      "type": "humidity_sensor",
+      "capabilities": [
+        {
+          "name": "relative_humidity()",
+          "description": "可以获取到当前的湿度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_motion_sensor",
+      "type": "motion_sensor",
+      "capabilities": [
+        {
+          "name": "motion_state()",
+          "description": "检测是否有人经过，如果有人则返回true，无人则返回false",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_television",
+      "type": "television",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开电视",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭电视",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_volume_high()",
+          "description": "将电视的音量调高",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_volume_low()",
+          "description": "将电视的音量调低",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_temperature_sensor",
+      "type": "temperature_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的温度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "viomi_vacuum",
+      "type": "vacuum",
+      "capabilities": [
+        {
+          "name": "start_sweep()",
+          "description": "开始清扫",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_sweeping()",
+          "description": "停止清扫",
+          "capabilityType": "action"
+        }
+      ]
+    }
+  ]
+}

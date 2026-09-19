@@ -1,0 +1,50 @@
+{
+  "user_input": [
+    "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum"
+  ],
+  "env_profile": [
+    {
+      "name": "LG_fire_detector",
+      "type": "fire_detector",
+      "capabilities": [
+        {
+          "name": "is_fire()",
+          "description": "可以获取到当前是否着火，如果着火返回true，否则返回false",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "beep()",
+          "description": "蜂鸣提示当前发生火灾",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_motion_sensor",
+      "type": "motion_sensor",
+      "capabilities": [
+        {
+          "name": "motion_state()",
+          "description": "检测是否有人经过，如果有人则返回true，无人则返回false",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "viomi_vacuum",
+      "type": "vacuum",
+      "capabilities": [
+        {
+          "name": "start_sweep()",
+          "description": "开始清扫",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_sweeping()",
+          "description": "停止清扫",
+          "capabilityType": "action"
+        }
+      ]
+    }
+  ]
+}

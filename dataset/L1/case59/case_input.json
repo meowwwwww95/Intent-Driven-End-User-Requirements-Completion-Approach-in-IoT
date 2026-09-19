@@ -1,0 +1,44 @@
+{
+    "user_input": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() X_stereo"
+    ],
+    "env_profile": [
+        {
+            "name": "X_stereo",
+            "type": "stereo",
+            "capabilities": [
+                {
+                    "name": "turn_on()",
+                    "description": "打开立体声",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_off()",
+                    "description": "关闭立体声",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_high_volume()",
+                    "description": "将立体声的音量调高",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_low_volume()",
+                    "description": "将立体声的音量调低",
+                    "capabilityType": "action"
+                }
+            ]
+        },
+        {
+            "name": "aqara_human_sensor",
+            "type": "human_sensor",
+            "capabilities": [
+                {
+                    "name": "reading()",
+                    "description": "检测屋内是否有人，如果有人则返回'人在家'，无人则返回'人离开'",
+                    "capabilityType": "trigger"
+                }
+            ]
+        }
+    ]
+}

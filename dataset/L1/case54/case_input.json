@@ -1,0 +1,44 @@
+{
+  "user_input": [
+    "IF aqara_temperature_sensor.reading() > 32 THEN turn_cool_on() xiaomi_air_conditioner"
+  ],
+  "env_profile": [
+    {
+      "name": "xiaomi_air_conditioner",
+      "type": "air_conditioner",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到“制冷模式”、“制热模式”或是“已关闭”",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_cool_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_heat_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_temperature_sensor",
+      "type": "temperature_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的温度",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

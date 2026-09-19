@@ -1,0 +1,28 @@
+{
+    "user_intent": [
+        "IF 人不在家 THEN 清洁环境",
+        "如果发生火灾，那么开始报警"
+    ],
+    "standard_taps": [
+        "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        }
+    ]
+}

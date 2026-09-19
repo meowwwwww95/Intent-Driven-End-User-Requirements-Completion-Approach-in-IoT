@@ -1,0 +1,78 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 233 lux 到 419 lux",
+        "期望 温度 处于 18 ℃ 到 25 ℃",
+        "PM2.5浓度 应 低于 100",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF wotie_brightness_sensor.brightness() < 233 AND aqara_human_sensor.reading() == 人在家 THEN brightness_up() wotie_brightness_sensor",
+        "IF wotie_brightness_sensor.brightness() > 419 AND aqara_human_sensor.reading() == 人在家 THEN brightness_down() wotie_brightness_sensor",
+        "IF qingping_air_monitor.reading_temperature() > 25 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_temperature() < 18 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF qingping_air_monitor.reading_PM2_5() < 100 AND aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_air_purifier",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector",
+        "IF LG_fire_detector.is_fire() == true THEN unlock() xiaobai_smart_door",
+        "IF aqara_human_sensor.reading() == 人离开 THEN light_off() wotie_brightness_sensor",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_conditioner",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_purifier",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() hannto_printer"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 233 lux 到 419 lux",
+            "realization_taps": [
+                [
+                    "IF wotie_brightness_sensor.brightness() < 233 AND aqara_human_sensor.reading() == 人在家 THEN brightness_up() wotie_brightness_sensor",
+                    "IF wotie_brightness_sensor.brightness() > 419 AND aqara_human_sensor.reading() == 人在家 THEN brightness_down() wotie_brightness_sensor"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 18 ℃ 到 25 ℃",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_temperature() > 25 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF qingping_air_monitor.reading_temperature() < 18 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "PM2.5浓度 应 低于 100",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_PM2_5() < 100 AND aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_air_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN light_off() wotie_brightness_sensor",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_conditioner",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_purifier",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() hannto_printer"
+                ]
+            ]
+        }
+    ]
+}

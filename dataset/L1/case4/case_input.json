@@ -1,0 +1,54 @@
+{
+  "user_input": [
+    "IF wotie_brightness_sensor.brightness() < 498 THEN brightness_up() wotie_brightness_sensor"
+  ],
+  "env_profile": [
+    {
+      "name": "wotie_brightness_sensor",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "brightness_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "brightness_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "LG_fire_detector",
+      "type": "fire_detector",
+      "capabilities": [
+        {
+          "name": "is_fire()",
+          "description": "可以获取到当前是否着火，如果着火返回true，否则返回false",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "beep()",
+          "description": "蜂鸣提示当前发生火灾",
+          "capabilityType": "action"
+        }
+      ]
+    }
+  ]
+}

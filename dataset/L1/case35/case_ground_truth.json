@@ -1,0 +1,42 @@
+{
+    "user_intent": [
+        "期望 温度 处于 21 ℃",
+        "油烟浓度 应低于 72 %",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_temperature_sensor.reading() > 21 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 21 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF aqara_smoke_sensor.reading() >= 0.72 AND aqara_motion_sensor.motion_state() == true THEN power_on() viomi_hood",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+        "IF aqara_motion_sensor.motion_state() == false THEN power_off() viomi_hood"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 温度 处于 21 ℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() > 21 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 21 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 72 %",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() >= 0.72 AND aqara_motion_sensor.motion_state() == true THEN power_on() viomi_hood"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+                    "IF aqara_motion_sensor.motion_state() == false THEN power_off() viomi_hood"
+                ]
+            ]
+        }
+    ]
+}

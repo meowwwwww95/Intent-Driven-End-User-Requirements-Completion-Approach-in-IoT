@@ -1,0 +1,76 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 799 lux 到 1412 lux",
+        "期望 湿度 处于 27 %",
+        "水质 应高于 75 Score",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF xiaomi_brightness_guard.brightness() < 1412 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light",
+        "IF xiaomi_brightness_guard.brightness() > 799 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_minus() aqara_LED_light",
+        "IF sprite_temperature_humidity_sensor_KD30.get_humidity() > 27 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() deerma_dehumidifier",
+        "IF sprite_temperature_humidity_sensor_KD30.get_humidity() < 27 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() deerma_humidifier",
+        "IF COLI_smart_water_filter.query_in_water_quality() <= 75 THEN work() COLI_smart_water_filter",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() aqara_LED_light",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() deerma_humidifier",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() deerma_dehumidifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 799 lux 到 1412 lux",
+            "realization_taps": [
+                [
+                    "IF xiaomi_brightness_guard.brightness() < 1412 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light",
+                    "IF xiaomi_brightness_guard.brightness() > 799 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_minus() aqara_LED_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 湿度 处于 27 %",
+            "realization_taps": [
+                [
+                    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() > 27 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() deerma_dehumidifier",
+                    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() < 27 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() deerma_humidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 75 Score",
+            "realization_taps": [
+                [
+                    "IF COLI_smart_water_filter.query_in_water_quality() <= 75 THEN work() COLI_smart_water_filter"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() aqara_LED_light",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() deerma_humidifier",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() deerma_dehumidifier"
+                ]
+            ]
+        }
+    ]
+}

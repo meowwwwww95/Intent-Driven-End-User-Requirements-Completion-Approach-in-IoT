@@ -1,0 +1,18 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 风扇摇头"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_on_swing() mijia_natural_fan"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 风扇摇头",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_on_swing() mijia_natural_fan"
+                ]
+            ]
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 降低 声音"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN motor_control(2) babai_curtain"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 降低 声音",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN motor_control(2) babai_curtain"
+                ]
+            ]
+        }
+    ]
+}

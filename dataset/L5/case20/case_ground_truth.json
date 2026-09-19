@@ -1,0 +1,122 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 219 lux 到 392 lux",
+        "期望 温度 处于 18 ℃",
+        "空气质量 应 高于 58 Score",
+        "期望 湿度 处于 52%",
+        "IF 人不在家 THEN 清洁环境",
+        "如果 人在家 那么 提高环境香味",
+        "水质 应高于 51 Score",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF wotie_brightness_sensor.brightness() < 392 AND aqara_motion_sensor.motion_state() == true THEN brightness_up() wotie_brightness_sensor",
+        "IF wotie_brightness_sensor.brightness() > 219 AND aqara_motion_sensor.motion_state() == true THEN brightness_down() wotie_brightness_sensor",
+        "IF aqara_temperature_sensor.reading() > 18 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 18 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF xiaomi_air_quality_sensor.get_air_score() < 58 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_air_purifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() < 52 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() > 52 AND aqara_motion_sensor.motion_state() == true THEN turn_off() zhimi_humidifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum",
+        "IF aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_diffuser",
+        "IF yunmi_water_purifier.tds_in() <= 51 THEN filter_water() yunmi_water_purifier",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door",
+        "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_purifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_diffuser"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 219 lux 到 392 lux",
+            "realization_taps": [
+                [
+                    "IF wotie_brightness_sensor.brightness() < 392 AND aqara_motion_sensor.motion_state() == true THEN brightness_up() wotie_brightness_sensor",
+                    "IF wotie_brightness_sensor.brightness() > 219 AND aqara_motion_sensor.motion_state() == true THEN brightness_down() wotie_brightness_sensor"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 18 ℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() > 18 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 18 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "空气质量 应 高于 58 Score",
+            "realization_taps": [
+                [
+                    "IF xiaomi_air_quality_sensor.get_air_score() < 58 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_air_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 湿度 处于 52%",
+            "realization_taps": [
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 52 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_humidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 52 AND aqara_motion_sensor.motion_state() == true THEN turn_off() zhimi_humidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果 人在家 那么 提高环境香味",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_diffuser"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 51 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() <= 51 THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_purifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_humidifier",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_diffuser"
+                ]
+            ]
+        }
+    ]
+}

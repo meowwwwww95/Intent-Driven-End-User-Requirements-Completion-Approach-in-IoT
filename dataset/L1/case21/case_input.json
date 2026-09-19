@@ -1,0 +1,56 @@
+{
+  "user_input": [
+    "IF xiaomi_humidity_sensor.relative_humidity() > 40 THEN turn_off() xiaomi_dehumidifier",
+    "IF viomi_hood.reading() > 1 THEN power_on() viomi_hood"
+  ],
+  "env_profile": [
+    {
+      "name": "xiaomi_dehumidifier",
+      "type": "dehumidifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开除湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭除湿器",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "viomi_hood",
+      "type": "hood",
+      "capabilities": [
+        {
+          "name": "power_on()",
+          "description": "打开抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "power_off()",
+          "description": "关闭抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "reading()",
+          "description": "返回油烟浓度，以%为单位",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_humidity_sensor",
+      "type": "humidity_sensor",
+      "capabilities": [
+        {
+          "name": "relative_humidity()",
+          "description": "可以获取到当前的湿度",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

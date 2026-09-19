@@ -1,0 +1,70 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 增加 亮度",
+        "二氧化碳浓度 应 低于 7%",
+        "水质 应高于 85 Score",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN brightness_up() wotie_brightness_sensor",
+        "IF mijia_CO2_ultra_sensor.get_CO2_concentration() > 7 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_air_purifier",
+        "IF yunmi_water_purifier.tds_in() < 85 THEN filter_water() yunmi_water_purifier",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector",
+        "IF LG_fire_detector.is_fire() == true THEN open_door() Blade_Star_smart_door",
+        "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 增加 亮度",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN brightness_up() wotie_brightness_sensor"
+                ]
+            ]
+        },
+        {
+            "user_intent": "二氧化碳浓度 应 低于 7%",
+            "realization_taps": [
+                [
+                    "IF mijia_CO2_ultra_sensor.get_CO2_concentration() > 7 AND aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_air_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 85 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 85 THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN open_door() Blade_Star_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_purifier"
+                ]
+            ]
+        }
+    ]
+}

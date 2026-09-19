@@ -1,0 +1,74 @@
+{
+    "user_input": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_on_swing() mijia_natural_fan"
+    ],
+    "env_profile": [
+        {
+            "name": "mijia_natural_fan",
+            "type": "fan",
+            "capabilities": [
+                {
+                    "name": "is_off()",
+                    "description": "判断是否关机",
+                    "capabilityType": "trigger"
+                },
+                {
+                    "name": "is_on()",
+                    "description": "判断是否开机",
+                    "capabilityType": "trigger"
+                },
+                {
+                    "name": "turn_on_child_lock()",
+                    "description": "打开儿童锁",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_off_child_lock()",
+                    "description": "关闭儿童锁",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_fan_on()",
+                    "description": "打开风扇",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_fan_off()",
+                    "description": "关闭风扇",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_on_natural_fan()",
+                    "description": "打开自然风",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_off_natural_fan()",
+                    "description": "关闭自然风",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_on_swing()",
+                    "description": "打开摆动",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_off_swing()",
+                    "description": "关闭摆动",
+                    "capabilityType": "action"
+                }
+            ]
+        },
+        {
+            "name": "aqara_human_sensor",
+            "type": "human_sensor",
+            "capabilities": [
+                {
+                    "name": "reading()",
+                    "description": "检测屋内是否有人，如果有人则返回'人在家'，无人则返回'人离开'",
+                    "capabilityType": "trigger"
+                }
+            ]
+        }
+    ]
+}

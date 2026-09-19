@@ -1,0 +1,321 @@
+{
+  "user_input": [
+    "IF LG_brightness_sensor.get_brightness() < 194 THEN turn_light_up() philips_zhiyi_light",
+    "IF sprite_temperature_humidity_sensor_KD30.get_temperature() > 26 THEN set_mode_to_cool() smart_inverter_air_conditioner",
+    "IF xiaomi_volume_sensor.reading() > 60 THEN turn_low_volume() X_stereo",
+    "IF sprite_temperature_humidity_sensor_KD30.get_humidity() > 20 THEN turn_on() deerma_humidifier"
+  ],
+  "env_profile": [
+    {
+      "name": "smart_inverter_air_conditioner",
+      "type": "air_conditioner",
+      "capabilities": [
+        {
+          "name": "get_status()",
+          "description": "获取空调当前状态，包括是否开启、模式、风速、温度等",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_on()",
+          "description": "开启空调",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭空调",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_swing_mode()",
+          "description": "打开空调上下摆风",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off_swing_mode()",
+          "description": "关闭空调上下摆风",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_auto()",
+          "description": "将空调风速调至自动档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_one()",
+          "description": "将空调风速调至一档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_two()",
+          "description": "将空调风速调至二档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_three()",
+          "description": "将空调风速调至三档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_four()",
+          "description": "将空调风速调至四档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_five()",
+          "description": "将空调风速调至五档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_six()",
+          "description": "将空调风速调至六档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_speed_to_seven()",
+          "description": "将空调风速调至七档",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_cool()",
+          "description": "将空调模式设置成制冷",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_heat()",
+          "description": "将空调模式设置成制热",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_dehumidify()",
+          "description": "将空调模式设置成除湿",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_fan()",
+          "description": "将空调模式设置成风扇",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_sleep()",
+          "description": "将空调模式设置成睡眠",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_comfort()",
+          "description": "将空调模式设置成舒适",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "LG_brightness_sensor",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "get_brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "deerma_dehumidifier",
+      "type": "dehumidifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开除湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭除湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "battery()",
+          "description": "获取当前电池电量",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "Blade_Star_smart_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "is_door_open()",
+          "description": "判断门是否打开",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_door_locked()",
+          "description": "判断门是否进行门外一键上锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "record()",
+          "description": "录制视频",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "open_door()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "close_door()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "lock_door()",
+          "description": "上锁门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "unlock_door()",
+          "description": "解锁门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "LG_fire_detector",
+      "type": "fire_detector",
+      "capabilities": [
+        {
+          "name": "is_fire()",
+          "description": "可以获取到当前是否着火，如果着火返回true，否则返回false",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "beep()",
+          "description": "蜂鸣提示当前发生火灾",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "deerma_humidifier",
+      "type": "humidifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开加湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭加湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mist_level(level)",
+          "description": "设置雾量档位（level为1-3）",
+          "capabilityType": "action"
+        },
+        {
+          "name": "water_level_warning()",
+          "description": "当水箱缺水时触发",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "philips_zhiyi_light",
+      "type": "light",
+      "capabilities": [
+        {
+          "name": "turn_light_on()",
+          "description": "开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_light_off()",
+          "description": "关灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "switch_children_mode()",
+          "description": "调至儿童看书模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_light_up()",
+          "description": "提升亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_light_down()",
+          "description": "降低亮度",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_motion_sensor",
+      "type": "motion_sensor",
+      "capabilities": [
+        {
+          "name": "motion_state()",
+          "description": "检测是否有人经过，如果有人则返回true，无人则返回false",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "X_stereo",
+      "type": "stereo",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开立体声",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭立体声",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_high_volume()",
+          "description": "将立体声的音量调高",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_low_volume()",
+          "description": "将立体声的音量调低",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "sprite_temperature_humidity_sensor_KD30",
+      "type": "temperature_sensor",
+      "capabilities": [
+        {
+          "name": "get_temperature()",
+          "description": "获取当前的温度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "get_humidity()",
+          "description": "获取当前的湿度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_volume_sensor",
+      "type": "volume_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的音量，单位为dB",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+    "user_intent": [
+        "期望 湿度 处于 40 %",
+        "油烟浓度 应低于 1 %"
+    ],
+    "standard_taps": [
+        "IF xiaomi_humidity_sensor.relative_humidity() < 40 THEN turn_off() xiaomi_dehumidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() > 40 THEN turn_on() xiaomi_dehumidifier",
+        "IF viomi_hood.reading() > 1 THEN power_on() viomi_hood"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 湿度 处于 40 %",
+            "realization_taps": [
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 40 THEN turn_off() xiaomi_dehumidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 40 THEN turn_on() xiaomi_dehumidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 1 %",
+            "realization_taps": [
+                [
+                    "IF viomi_hood.reading() > 1 THEN power_on() viomi_hood"
+                ]
+            ]
+        }
+    ]
+}

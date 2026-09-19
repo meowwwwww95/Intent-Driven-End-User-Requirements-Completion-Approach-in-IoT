@@ -1,0 +1,234 @@
+{
+  "user_input": [
+    "IF aqara_motion_sensor.motion_state() == true THEN brightness_up() wotie_brightness_sensor",
+    "IF miaomiao_air_monitor.reading(Temperature) > 25 THEN turn_cool_on() xiaomi_air_conditioner",
+    "IF miaomiao_air_monitor.reading(pm2.5Density) > 88 THEN turn_on() zhimi_air_fresh",
+    "IF yunmi_water_purifier.tds_in() < 79 THEN turn_on() yunmi_water_purifier"
+  ],
+  "env_profile": [
+    {
+      "name": "xiaomi_air_conditioner",
+      "type": "air_conditioner",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到“制冷模式”、“制热模式”或是“已关闭”",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_cool_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_heat_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "zhimi_air_fresh",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开启空气净化器以提高空气质量",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭空气净化器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "above_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否高于指定浓度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "below_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否低于指定浓度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_on_mute_mode()",
+          "description": "调至静音模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_strong_wind_mode()",
+          "description": "调至强风模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_intelligent_mode()",
+          "description": "调至智能模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_manual_mode()",
+          "description": "调至手动模式",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "miaomiao_air_monitor",
+      "type": "air_quality_sensor",
+      "capabilities": [
+        {
+          "name": "reading(air_quality)",
+          "description": "读取当前空气质量，百分制，空气质量越高，分数越高",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(HCHODesity)",
+          "description": "读取当前甲醛值，单位ppm",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(pm2.5Density)",
+          "description": "读取当前PM2.5值，单位ppm",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(RelativeHumidity)",
+          "description": "读取当前湿度，单位%",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(Temperature)",
+          "description": "读取当前温度，单位℃",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "wotie_brightness_sensor",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "brightness_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "brightness_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "chuangmi_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "yunmi_water_purifier",
+      "type": "filter",
+      "capabilities": [
+        {
+          "name": "get_temperature()",
+          "description": "获取当前水温信息，单位为℃",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "tds_in()",
+          "description": "获取当前入水水质信息，百分制，分数越高，水质越好",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "tds_out()",
+          "description": "获取当前出水水质信息，百分制，分数越高，水质越好",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "filter_life()",
+          "description": "获取当前滤芯剩余寿命信息，百分制，分数越高，代表剩余寿命越长",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "heat_water()",
+          "description": "加热水，提高当前水温",
+          "capabilityType": "action"
+        },
+        {
+          "name": "filter_water()",
+          "description": "过滤水，提高水质分数",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_motion_sensor",
+      "type": "motion_sensor",
+      "capabilities": [
+        {
+          "name": "motion_state()",
+          "description": "检测是否有人经过，如果有人则返回true，无人则返回false",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+    "user_intent": [
+        "If no one is at home, then clean the environment",
+        "If a fire occurs, then open the escape route"
+    ],
+    "standard_taps": [
+        "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "If no one is at home, then clean the environment",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "If a fire occurs, then open the escape route",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+                ]
+            ]
+        }
+    ]
+}

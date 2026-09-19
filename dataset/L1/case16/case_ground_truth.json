@@ -1,0 +1,40 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 300 lux 到 500 lux",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道"
+    ],
+    "standard_taps": [
+        "IF LG_brightness_sensor.get_brightness() > 500 THEN light_down() xiaomi_smart_light",
+        "IF LG_brightness_sensor.get_brightness() < 300 THEN light_up() xiaomi_smart_light",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 300 lux 到 500 lux",
+            "realization_taps": [
+                [
+                    "IF LG_brightness_sensor.get_brightness() > 500 THEN light_down() xiaomi_smart_light",
+                    "IF LG_brightness_sensor.get_brightness() < 300 THEN light_up() xiaomi_smart_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+                ]
+            ]
+        }
+    ]
+}

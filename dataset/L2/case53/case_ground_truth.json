@@ -1,0 +1,40 @@
+{
+    "user_intent": [
+        "期望 声音 处于 31 dB",
+        "如果 人在家 那么 提高环境香味",
+        "如果发生火灾，那么开始报警"
+    ],
+    "standard_taps": [
+        "IF aqara_sound_sensor.reading() > 31 THEN set_volume_low() xiaomi_television",
+        "IF aqara_sound_sensor.reading() < 31 THEN set_volume_high() xiaomi_television",
+        "IF aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_diffuser",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 声音 处于 31 dB",
+            "realization_taps": [
+                [
+                    "IF aqara_sound_sensor.reading() > 31 THEN set_volume_low() xiaomi_television",
+                    "IF aqara_sound_sensor.reading() < 31 THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果 人在家 那么 提高环境香味",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == true THEN turn_on() xiaomi_diffuser"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        }
+    ]
+}

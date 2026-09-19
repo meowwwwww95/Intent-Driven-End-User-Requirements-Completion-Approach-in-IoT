@@ -1,0 +1,40 @@
+{
+    "user_intent": [
+        "Preferred humidity should between 30% and 60%",
+        "Preferred air quality should be above 60 Score",
+        "If fire happens, then turn on alarm"
+    ],
+    "standard_taps": [
+        "IF miaomiao_air_monitor.reading(RelativeHumidity) < 30 THEN turn_off() xiaomi_dehumidifier",
+        "IF miaomiao_air_monitor.reading(RelativeHumidity) > 60 THEN turn_on() xiaomi_dehumidifier",
+        "IF miaomiao_air_monitor.reading(air_quality) < 60 THEN turn_on() zhimi_air_fresh",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "Preferred humidity should between 30% and 60%",
+            "realization_taps": [
+                [
+                    "IF miaomiao_air_monitor.reading(RelativeHumidity) < 30 THEN turn_off() xiaomi_dehumidifier",
+                    "IF miaomiao_air_monitor.reading(RelativeHumidity) > 60 THEN turn_on() xiaomi_dehumidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "Preferred air quality should be above 60 Score",
+            "realization_taps": [
+                [
+                    "IF miaomiao_air_monitor.reading(air_quality) < 60 THEN turn_on() zhimi_air_fresh"
+                ]
+            ]
+        },
+        {
+            "user_intent": "If fire happens, then turn on alarm",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        }
+    ]
+}

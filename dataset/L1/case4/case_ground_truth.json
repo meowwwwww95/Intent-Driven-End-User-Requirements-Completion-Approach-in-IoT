@@ -1,0 +1,30 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 498 lux 到 994 lux",
+        "如果发生火灾，那么开始报警"
+    ],
+    "standard_taps": [
+        "IF wotie_brightness_sensor.brightness() < 498 THEN brightness_up() wotie_brightness_sensor",
+        "IF wotie_brightness_sensor.brightness() > 994 THEN brightness_down() wotie_brightness_sensor",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 498 lux 到 994 lux",
+            "realization_taps": [
+                [
+                    "IF wotie_brightness_sensor.brightness() < 498 THEN brightness_up() wotie_brightness_sensor",
+                    "IF wotie_brightness_sensor.brightness() > 994 THEN brightness_down() wotie_brightness_sensor"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        }
+    ]
+}

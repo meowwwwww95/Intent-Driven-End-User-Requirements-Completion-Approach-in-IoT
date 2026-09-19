@@ -1,0 +1,68 @@
+{
+    "user_intent": [
+        "期望 温度 处于 27 ℃ 到 29 ℃",
+        "PM2.5浓度 应 低于 134",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_temperature_sensor.reading() > 29 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 27 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF miaomiao_air_monitor.reading(Temperature) > 29 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF miaomiao_air_monitor.reading(Temperature) < 27 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF miaomiao_air_monitor.reading(pm2.5Density) >= 134 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_air_fresh",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_air_fresh",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 温度 处于 27 ℃ 到 29 ℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() > 29 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 27 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner"
+                ],
+                [
+                    "IF miaomiao_air_monitor.reading(Temperature) > 29 AND aqara_motion_sensor.motion_state() == true THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF miaomiao_air_monitor.reading(Temperature) < 27 AND aqara_motion_sensor.motion_state() == true THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "PM2.5浓度 应 低于 134",
+            "realization_taps": [
+                [
+                    "IF miaomiao_air_monitor.reading(pm2.5Density) >= 134 AND aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_air_fresh"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() zhimi_air_fresh",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_conditioner"
+                ]
+            ]
+        }
+    ]
+}

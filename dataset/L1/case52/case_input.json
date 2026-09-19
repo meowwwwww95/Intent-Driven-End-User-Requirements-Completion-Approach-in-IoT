@@ -1,0 +1,29 @@
+{
+  "user_input": [
+    "IF aqara_human_sensor.reading() == 人在家 THEN motor_control(2) babai_curtain"
+  ],
+  "env_profile": [
+    {
+      "name": "babai_curtain",
+      "type": "curtain",
+      "capabilities": [
+        {
+          "name": "motor_control(position)",
+          "description": "控制窗帘到指定位置，1为打开，2为关闭",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_human_sensor",
+      "type": "human_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "检测屋内是否有人，如果有人则返回'人在家'，无人则返回'人离开'",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

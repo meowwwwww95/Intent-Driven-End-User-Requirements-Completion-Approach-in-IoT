@@ -1,0 +1,145 @@
+{
+  "user_input": [
+    "IF carbonDioxide_monitor.reading() >= 0.06 THEN turn_on() oxygen_machine",
+    "IF aqara_motion_sensor.motion_state() == false THEN start_sweep() viomi_vacuum"
+  ],
+  "env_profile": [
+    {
+      "name": "xiaomi_air_conditioner",
+      "type": "air_conditioner",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到“制冷模式”、“制热模式”或是“已关闭”",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_cool_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_heat_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "zhimi_air_fresh",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开启空气净化器以提高空气质量",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭空气净化器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "above_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否高于指定浓度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "below_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否低于指定浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "wotie_brightness_sensor",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "brightness_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "brightness_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_motion_sensor",
+      "type": "motion_sensor",
+      "capabilities": [
+        {
+          "name": "motion_state()",
+          "description": "检测是否有人经过，如果有人则返回true，无人则返回false",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "viomi_vacuum",
+      "type": "vacuum",
+      "capabilities": [
+        {
+          "name": "start_sweep()",
+          "description": "开始清扫",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_sweeping()",
+          "description": "停止清扫",
+          "capabilityType": "action"
+        }
+      ]
+    },
+        {
+    "name": "carbonDioxide_monitor",
+    "type": "CO2_sensor",
+    "capabilities": [
+      {
+        "name": "reading()",
+        "description": "获取当前CO2浓度",
+        "capabilityType": "trigger"
+      }
+    ]
+  },
+  {
+    "name": "oxygen_machine",
+    "type": "oxygen_machine",
+    "capabilities": [
+        {
+            "name": "turn_on()",
+            "description": "开启制氧机",
+            "capabilityType": "action"
+        },
+        {
+            "name": "turn_off()",
+            "description": "关闭制氧机",
+            "capabilityType": "action"
+        }
+    ]
+}
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "user_input": [
+    "IF miaomiao_air_monitor.reading(air_quality) <= 77 THEN turn_on() xiaomi_air_purifier",
+    "IF aqara_sound_sensor.reading() > 39 THEN set_volume_low() xiaomi_television"
+  ],
+  "env_profile": [
+    {
+      "name": "xiaomi_air_purifier",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开启空气净化器以提高空气质量",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭空气净化器",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "miaomiao_air_monitor",
+      "type": "air_quality_sensor",
+      "capabilities": [
+        {
+          "name": "reading(air_quality)",
+          "description": "读取当前空气质量，百分制，空气质量越高，分数越高",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(HCHODesity)",
+          "description": "读取当前甲醛值，单位ppm",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(pm2.5Density)",
+          "description": "读取当前PM2.5值，单位ppm",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(RelativeHumidity)",
+          "description": "读取当前湿度，单位%",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(Temperature)",
+          "description": "读取当前温度，单位℃",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "chuangmi_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_television",
+      "type": "television",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开电视",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭电视",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_volume_high()",
+          "description": "将电视的音量调高",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_volume_low()",
+          "description": "将电视的音量调低",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_sound_sensor",
+      "type": "volume_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的音量，单位为dB",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

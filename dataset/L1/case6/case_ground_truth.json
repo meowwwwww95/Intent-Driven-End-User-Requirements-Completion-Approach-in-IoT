@@ -1,0 +1,20 @@
+{
+    "user_intent": [
+        "期望 声音 处于 42 dB 到 66 dB"
+    ],
+    "standard_taps": [
+        "IF xiaomi_volume_sensor.reading() > 66 THEN set_volume_low() xiaomi_television",
+        "IF xiaomi_volume_sensor.reading() < 42 THEN set_volume_high() xiaomi_television"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 声音 处于 42 dB 到 66 dB",
+            "realization_taps": [
+                [
+                    "IF xiaomi_volume_sensor.reading() > 66 THEN set_volume_low() xiaomi_television",
+                    "IF xiaomi_volume_sensor.reading() < 42 THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        }
+    ]
+}

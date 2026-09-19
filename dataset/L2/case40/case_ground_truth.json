@@ -1,0 +1,38 @@
+{
+    "user_intent": [
+        "二氧化碳浓度 应 低于 5%",
+        "油烟浓度 应低于 60 %",
+        "如果发生火灾，那么开始报警"
+    ],
+    "standard_taps": [
+        "IF carbonDioxide_monitor.reading() >= 0.05 THEN turn_on() oxygen_machine",
+        "IF aqara_smoke_sensor.reading() >= 0.60 THEN power_on() viomi_hood",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "二氧化碳浓度 应 低于 5%",
+            "realization_taps": [
+                [
+                    "IF carbonDioxide_monitor.reading() >= 0.05 THEN turn_on() oxygen_machine"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 60 %",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() >= 0.60 THEN power_on() viomi_hood"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        }
+    ]
+}

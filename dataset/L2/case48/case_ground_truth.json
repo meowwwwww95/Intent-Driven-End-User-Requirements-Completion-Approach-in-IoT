@@ -1,0 +1,52 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 增加 亮度",
+        "期望 温度 处于 18 ℃ 到 20 ℃",
+        "如果发生火灾，那么开始报警",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_smart_light",
+        "IF aqara_temperature_sensor.reading() > 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 18 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_smart_light",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_conditioner"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 增加 亮度",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_smart_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 18 ℃ 到 20 ℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() > 20 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 18 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_smart_light",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_conditioner"
+                ]
+            ]
+        }
+    ]
+}

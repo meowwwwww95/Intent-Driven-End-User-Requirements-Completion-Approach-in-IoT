@@ -1,0 +1,72 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 增加 亮度",
+        "期望 温度 处于 16 ℃",
+        "水质 应高于 68 Score",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN brightness_up() wotie_brightness_sensor",
+        "IF aqara_temperature_sensor.reading() > 16 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 16 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner",
+        "IF yunmi_water_purifier.tds_in() < 68 THEN filter_water() yunmi_water_purifier",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door",
+        "IF aqara_human_sensor.reading() == 人离开 THEN light_off() wotie_brightness_sensor",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_conditioner"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 增加 亮度",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN brightness_up() wotie_brightness_sensor"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 16 ℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() > 16 AND aqara_human_sensor.reading() == 人在家 THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 16 AND aqara_human_sensor.reading() == 人在家 THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 68 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 68 THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN light_off() wotie_brightness_sensor",
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_air_conditioner"
+                ]
+            ]
+        }
+    ]
+}

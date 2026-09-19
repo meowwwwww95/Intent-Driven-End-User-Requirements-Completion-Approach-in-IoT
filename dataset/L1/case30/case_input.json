@@ -1,0 +1,56 @@
+{
+  "user_input": [
+    "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_diffuser",
+    "IF viomi_hood.reading() > 93 THEN power_on() viomi_hood"
+  ],
+  "env_profile": [
+    {
+      "name": "xiaomi_diffuser",
+      "type": "diffuser",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开香氛机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭香氛机",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "viomi_hood",
+      "type": "hood",
+      "capabilities": [
+        {
+          "name": "power_on()",
+          "description": "打开抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "power_off()",
+          "description": "关闭抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "reading()",
+          "description": "返回油烟浓度，以%为单位",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_human_sensor",
+      "type": "human_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "检测屋内是否有人，如果有人则返回'人在家'，无人则返回'人离开'",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

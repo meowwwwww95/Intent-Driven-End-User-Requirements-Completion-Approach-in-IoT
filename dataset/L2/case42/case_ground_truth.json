@@ -1,0 +1,18 @@
+{
+    "user_intent": [
+        "油烟浓度 应低于 55 %"
+    ],
+    "standard_taps": [
+        "IF aqara_smoke_sensor.reading() >= 0.55 THEN power_on() viomi_hood"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "油烟浓度 应低于 55 %",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() >= 0.55 THEN power_on() viomi_hood"
+                ]
+            ]
+        }
+    ]
+}

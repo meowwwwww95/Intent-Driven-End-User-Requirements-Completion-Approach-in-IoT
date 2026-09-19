@@ -1,0 +1,182 @@
+{
+  "user_input": [
+    "IF LG_brightness_sensor.get_brightness() < 436 THEN turn_light_up() philips_zhiyi_light",
+    "IF mijia_CO2_ultra_sensor.get_CO2_concentration() > 11 THEN turn_on() xiaomi_air_purifier",
+    "IF aqara_motion_sensor.motion_state() == true THEN turn_on() zhimi_diffuser"
+  ],
+  "env_profile": [
+    {
+      "name": "xiaomi_air_purifier",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开启空气净化器以提高空气质量",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭空气净化器",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "LG_brightness_sensor",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "get_brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "mijia_CO2_ultra_sensor",
+      "type": "CO2_sensor",
+      "capabilities": [
+        {
+          "name": "get_CO2_concentration()",
+          "description": "获取当前CO2浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "zhimi_diffuser",
+      "type": "diffuser",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开香氛机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭香氛机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mist_level(level)",
+          "description": "设置出雾量档位（level为1-3）",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_on()",
+          "description": "打开氛围灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_off()",
+          "description": "关闭氛围灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "water_level_low()",
+          "description": "当水位过低时触发",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "Blade_Star_smart_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "is_door_open()",
+          "description": "判断门是否打开",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_door_locked()",
+          "description": "判断门是否进行门外一键上锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "record()",
+          "description": "录制视频",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "open_door()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "close_door()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "lock_door()",
+          "description": "上锁门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "unlock_door()",
+          "description": "解锁门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "LG_fire_detector",
+      "type": "fire_detector",
+      "capabilities": [
+        {
+          "name": "is_fire()",
+          "description": "可以获取到当前是否着火，如果着火返回true，否则返回false",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "beep()",
+          "description": "蜂鸣提示当前发生火灾",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "philips_zhiyi_light",
+      "type": "light",
+      "capabilities": [
+        {
+          "name": "turn_light_on()",
+          "description": "开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_light_off()",
+          "description": "关灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "switch_children_mode()",
+          "description": "调至儿童看书模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_light_up()",
+          "description": "提升亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_light_down()",
+          "description": "降低亮度",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_motion_sensor",
+      "type": "motion_sensor",
+      "capabilities": [
+        {
+          "name": "motion_state()",
+          "description": "检测是否有人经过，如果有人则返回true，无人则返回false",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

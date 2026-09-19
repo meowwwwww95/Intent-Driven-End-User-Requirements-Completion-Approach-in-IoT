@@ -1,0 +1,20 @@
+{
+    "user_intent": [
+        "期望 水温 处于 70 ℃ 到 80 ℃"
+    ],
+    "standard_taps": [
+        "IF mijia_water_heater.reading() < 70 THEN heat_up() mijia_water_heater",
+        "IF mijia_water_heater.reading() > 80 THEN turn_off() mijia_water_heater"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 水温 处于 70 ℃ 到 80 ℃",
+            "realization_taps": [
+                [
+                    "IF mijia_water_heater.reading() < 70 THEN heat_up() mijia_water_heater",
+                    "IF mijia_water_heater.reading() > 80 THEN turn_off() mijia_water_heater"
+                ]
+            ]
+        }
+    ]
+}

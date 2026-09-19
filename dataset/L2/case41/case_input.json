@@ -1,0 +1,133 @@
+{
+  "user_input": [
+    "IF miaomiao_air_monitor.reading(pm2.5Density) >= 84 THEN turn_on() zhimi_air_fresh",
+    "IF aqara_smoke_sensor.reading() >= 0.69 THEN power_on() viomi_hood"
+  ],
+  "env_profile": [
+    {
+      "name": "zhimi_air_fresh",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开启空气净化器以提高空气质量",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭空气净化器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "above_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否高于指定浓度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "below_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否低于指定浓度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_on_mute_mode()",
+          "description": "调至静音模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_strong_wind_mode()",
+          "description": "调至强风模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_intelligent_mode()",
+          "description": "调至智能模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_manual_mode()",
+          "description": "调至手动模式",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "miaomiao_air_monitor",
+      "type": "air_quality_sensor",
+      "capabilities": [
+        {
+          "name": "reading(air_quality)",
+          "description": "读取当前空气质量，百分制，空气质量越高，分数越高",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(HCHODesity)",
+          "description": "读取当前甲醛值，单位ppm",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(pm2.5Density)",
+          "description": "读取当前PM2.5值，单位ppm",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(RelativeHumidity)",
+          "description": "读取当前湿度，单位%",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading(Temperature)",
+          "description": "读取当前温度，单位℃",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "chuangmi_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "viomi_hood",
+      "type": "hood",
+      "capabilities": [
+        {
+          "name": "power_on()",
+          "description": "打开抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "power_off()",
+          "description": "关闭抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "reading()",
+          "description": "返回油烟浓度，以%为单位",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

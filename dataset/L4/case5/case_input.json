@@ -1,0 +1,282 @@
+{
+  "user_input": [
+    "IF xiaomi_brightness_guard.brightness() < 300 THEN light_up() xiaomi_smart_light",
+    "IF mijia_CO2_ultra_sensor.get_CO2_concentration() > 19 THEN turn_on() mijia_air_purifier_MAX",
+    "IF xiaomi_volume_sensor.reading() > 37 THEN set_volume_low() xiaomi_television",
+    "IF viomi_hood.reading() >= 0.15 THEN power_on() viomi_hood"
+  ],
+  "env_profile": [
+    {
+      "name": "mijia_air_purifier",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_1()",
+          "description": "调至1挡",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_2()",
+          "description": "调至2挡",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_mode_to_3()",
+          "description": "调至3挡",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "mijia_air_purifier_MAX",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "get_PM2_5()",
+          "description": "获取当前的PM2.5数值",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_on()",
+          "description": "开机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_screen_light()",
+          "description": "屏幕调至亮光",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off_screen_light()",
+          "description": "关屏幕灯光",
+          "capabilityType": "action"
+        },
+        {
+          "name": "switch_to_sleep_mode()",
+          "description": "调至睡眠模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "switch_to_auto_mode()",
+          "description": "调至自动模式",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "DingZero_Alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "start_alarm()",
+          "description": "启动报警",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_alarm()",
+          "description": "停止报警",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_brightness_guard",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reset()",
+          "description": "重置设备",
+          "capabilityType": "action"
+        },
+        {
+          "name": "connect_to_local_network()",
+          "description": "连接至局域网",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "mijia_CO2_ultra_sensor",
+      "type": "CO2_sensor",
+      "capabilities": [
+        {
+          "name": "get_CO2_concentration()",
+          "description": "获取当前CO2浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaobai_smart_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "is_lock()",
+          "description": "判断门是否已上锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_unlock()",
+          "description": "判断门是否已解锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_low_battery()",
+          "description": "判断门的电量是否较低",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "unlock()",
+          "description": "解锁门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "lock()",
+          "description": "锁门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "viomi_hood",
+      "type": "hood",
+      "capabilities": [
+        {
+          "name": "power_on()",
+          "description": "打开抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "power_off()",
+          "description": "关闭抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "reading()",
+          "description": "返回油烟浓度，以%为单位",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_presence_sensor_pro",
+      "type": "human_sensor",
+      "capabilities": [
+        {
+          "name": "get_illuminance()",
+          "description": "获取当前的光照度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_person_present()",
+          "description": "检测设备所在空间的任意区域是否有人, 若有人则返回true, 若无人则返回false",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "start_radar()",
+          "description": "打开本传感器的雷达",
+          "capabilityType": "action"
+        },
+        {
+          "name": "stop_radar()",
+          "description": "关闭本传感器的雷达",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_smart_light",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "light_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "zhimi_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_television",
+      "type": "television",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开电视",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭电视",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_volume_high()",
+          "description": "将电视的音量调高",
+          "capabilityType": "action"
+        },
+        {
+          "name": "set_volume_low()",
+          "description": "将电视的音量调低",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_volume_sensor",
+      "type": "volume_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的音量，单位为dB",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

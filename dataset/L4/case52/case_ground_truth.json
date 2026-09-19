@@ -1,0 +1,98 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 增加 亮度",
+        "期望 温度 处于 20 ℃ 到 28 ℃",
+        "PM2.5浓度 应 低于 18",
+        "水质 应高于 92 Score",
+        "油烟浓度 应低于 22 %",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light",
+        "IF sprite_temperature_humidity_sensor_KD30.get_temperature() > 28 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on_natural_fan() mijia_natural_fan",
+        "IF sprite_temperature_humidity_sensor_KD30.get_temperature() < 20 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on_high_mode() yunmi_AI_heater",
+        "IF mijia_air_purifier_MAX.get_PM2_5() > 18 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX",
+        "IF COLI_smart_water_filter.query_in_water_quality() <= 92 THEN work() COLI_smart_water_filter",
+        "IF generic_hood_version_1.reading() > 0.22 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN power_on() generic_hood_version_1",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() aqara_LED_light",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_fan_off() mijia_natural_fan",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() yunmi_AI_heater",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN power_off() generic_hood_version_1"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 增加 亮度",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN brightness_plus() aqara_LED_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 20 ℃ 到 28 ℃",
+            "realization_taps": [
+                [
+                    "IF sprite_temperature_humidity_sensor_KD30.get_temperature() > 28 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on_natural_fan() mijia_natural_fan",
+                    "IF sprite_temperature_humidity_sensor_KD30.get_temperature() < 20 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on_high_mode() yunmi_AI_heater"
+                ]
+            ]
+        },
+        {
+            "user_intent": "PM2.5浓度 应 低于 18",
+            "realization_taps": [
+                [
+                    "IF mijia_air_purifier_MAX.get_PM2_5() > 18 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 92 Score",
+            "realization_taps": [
+                [
+                    "IF COLI_smart_water_filter.query_in_water_quality() <= 92 THEN work() COLI_smart_water_filter"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 22 %",
+            "realization_taps": [
+                [
+                    "IF generic_hood_version_1.reading() > 0.22 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN power_on() generic_hood_version_1"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() aqara_LED_light",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_fan_off() mijia_natural_fan",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() yunmi_AI_heater",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN power_off() generic_hood_version_1"
+                ]
+            ]
+        }
+    ]
+}

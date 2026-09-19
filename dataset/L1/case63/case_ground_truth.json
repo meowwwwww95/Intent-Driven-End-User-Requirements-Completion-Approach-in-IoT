@@ -1,0 +1,18 @@
+{
+    "user_intent": [
+        "如果 人在家 那么 变色灯光"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_to_red() aqara_LED_light"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "如果 人在家 那么 变色灯光",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_to_red() aqara_LED_light"
+                ]
+            ]
+        }
+    ]
+}

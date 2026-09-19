@@ -1,0 +1,40 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 308 lux 到 429 lux",
+        "如果发生火灾，那么开始报警",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF LG_brightness_sensor.get_brightness() > 429 AND aqara_motion_sensor.motion_state() == true THEN light_down() xiaomi_smart_light",
+        "IF LG_brightness_sensor.get_brightness() < 308 AND aqara_motion_sensor.motion_state() == true THEN light_up() xiaomi_smart_light",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_smart_light"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 308 lux 到 429 lux",
+            "realization_taps": [
+                [
+                    "IF LG_brightness_sensor.get_brightness() > 429 AND aqara_motion_sensor.motion_state() == true THEN light_down() xiaomi_smart_light",
+                    "IF LG_brightness_sensor.get_brightness() < 308 AND aqara_motion_sensor.motion_state() == true THEN light_up() xiaomi_smart_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_smart_light"
+                ]
+            ]
+        }
+    ]
+}

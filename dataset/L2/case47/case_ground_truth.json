@@ -1,0 +1,42 @@
+{
+    "user_intent": [
+        "期望 声音 处于 82 dB",
+        "期望 湿度 处于 42 %",
+        "如果发生火灾，那么打开逃生通道"
+    ],
+    "standard_taps": [
+        "IF aqara_sound_sensor.reading() > 82 THEN set_volume_low() xiaomi_television",
+        "IF aqara_sound_sensor.reading() < 82 THEN set_volume_high() xiaomi_television",
+        "IF xiaomi_humidity_sensor.relative_humidity() > 42 THEN turn_on() xiaomi_dehumidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() < 42 THEN turn_off() xiaomi_dehumidifier",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 声音 处于 82 dB",
+            "realization_taps": [
+                [
+                    "IF aqara_sound_sensor.reading() > 82 THEN set_volume_low() xiaomi_television",
+                    "IF aqara_sound_sensor.reading() < 82 THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 湿度 处于 42 %",
+            "realization_taps": [
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 42 THEN turn_on() xiaomi_dehumidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 42 THEN turn_off() xiaomi_dehumidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+                ]
+            ]
+        }
+    ]
+}

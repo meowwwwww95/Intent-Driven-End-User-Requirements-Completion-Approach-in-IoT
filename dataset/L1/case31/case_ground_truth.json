@@ -1,0 +1,28 @@
+{
+    "user_intent": [
+        "水质 应高于 72 Score",
+        "油烟浓度 应低于 8 %"
+    ],
+    "standard_taps": [
+        "IF yunmi_water_purifier.tds_in() < 72 THEN filter_water() yunmi_water_purifier",
+        "IF viomi_hood.reading() > 8 THEN power_on() viomi_hood"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "水质 应高于 72 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 72 THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 8 %",
+            "realization_taps": [
+                [
+                    "IF viomi_hood.reading() > 8 THEN power_on() viomi_hood"
+                ]
+            ]
+        }
+    ]
+}

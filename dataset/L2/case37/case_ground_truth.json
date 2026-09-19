@@ -1,0 +1,38 @@
+{
+    "user_intent": [
+        "空气质量 应 高于 78 Score",
+        "水质 应高于 70 Score",
+        "如果发生火灾，那么开始报警"
+    ],
+    "standard_taps": [
+        "IF miaomiao_air_monitor.reading(air_quality) <= 78 THEN turn_on() xiaomi_air_purifier",
+        "IF yunmi_water_purifier.tds_in() < 70 THEN filter_water() yunmi_water_purifier",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "空气质量 应 高于 78 Score",
+            "realization_taps": [
+                [
+                    "IF miaomiao_air_monitor.reading(air_quality) <= 78 THEN turn_on() xiaomi_air_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 70 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 70 THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        }
+    ]
+}

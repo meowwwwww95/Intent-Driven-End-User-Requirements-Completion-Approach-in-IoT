@@ -1,0 +1,83 @@
+{
+  "user_input": [
+    "IF carbonDioxide_monitor.reading() >= 0.05 THEN turn_on() oxygen_machine",
+    "IF aqara_smoke_sensor.reading() >= 0.60 THEN power_on() viomi_hood"
+  ],
+  "env_profile": [
+    {
+      "name": "aqara_alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "viomi_hood",
+      "type": "hood",
+      "capabilities": [
+        {
+          "name": "power_on()",
+          "description": "打开抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "power_off()",
+          "description": "关闭抽油烟机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "reading()",
+          "description": "返回油烟浓度，以%为单位",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "carbonDioxide_monitor",
+      "type": "CO2_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "获取当前CO2浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "oxygen_machine",
+      "type": "oxygen_machine",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开启制氧机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭制氧机",
+          "capabilityType": "action"
+        }
+      ]
+    }
+  ]
+}

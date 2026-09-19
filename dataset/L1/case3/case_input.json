@@ -1,0 +1,49 @@
+{
+  "user_input": [
+    "IF wotie_brightness_sensor.brightness() < 128 THEN brightness_up() wotie_brightness_sensor"
+  ],
+  "env_profile": [
+    {
+      "name": "wotie_brightness_sensor",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "brightness()",
+          "description": "可以获取到当前的亮度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "brightness_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "brightness_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_human_sensor",
+      "type": "human_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "检测屋内是否有人，如果有人则返回'人在家'，无人则返回'人离开'",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

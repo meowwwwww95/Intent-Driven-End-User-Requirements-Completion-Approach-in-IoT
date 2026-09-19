@@ -1,0 +1,88 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 300 lux",
+        "二氧化碳浓度 应 低于 19%",
+        "期望 声音 处于 34 dB 到 37 dB",
+        "油烟浓度 应低于 15 %",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF xiaomi_presence_sensor_pro.get_illuminance() < 300 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_up() xiaomi_smart_light",
+        "IF xiaomi_presence_sensor_pro.get_illuminance() > 300 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_down() xiaomi_smart_light",
+        "IF mijia_CO2_ultra_sensor.get_CO2_concentration() > 19 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX",
+        "IF xiaomi_volume_sensor.reading() > 37 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_low() xiaomi_television",
+        "IF xiaomi_volume_sensor.reading() < 34 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_high() xiaomi_television",
+        "IF viomi_hood.reading() >= 0.15 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN power_on() viomi_hood",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_smart_light",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_television",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN power_off() viomi_hood"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 300 lux",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.get_illuminance() < 300 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_up() xiaomi_smart_light",
+                    "IF xiaomi_presence_sensor_pro.get_illuminance() > 300 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_down() xiaomi_smart_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "二氧化碳浓度 应 低于 19%",
+            "realization_taps": [
+                [
+                    "IF mijia_CO2_ultra_sensor.get_CO2_concentration() > 19 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() mijia_air_purifier_MAX"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 声音 处于 34 dB 到 37 dB",
+            "realization_taps": [
+                [
+                    "IF xiaomi_volume_sensor.reading() > 37 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_low() xiaomi_television",
+                    "IF xiaomi_volume_sensor.reading() < 34 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 15 %",
+            "realization_taps": [
+                [
+                    "IF viomi_hood.reading() >= 0.15 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN power_on() viomi_hood"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_smart_light",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() mijia_air_purifier_MAX",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_television",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN power_off() viomi_hood"
+                ]
+            ]
+        }
+    ]
+}

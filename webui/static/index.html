@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRT Demo UI</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">BRT Demonstration Console</p>
+        <h1>多 Agent 运行过程展示</h1>
+        <p class="subtitle">以论文/演示风格实时展示 case 运行过程、Agent 协同关系与追溯树生长过程。</p>
+      </div>
+      <div class="hero-card">
+        <div class="hero-metric">
+          <span>运行状态</span>
+          <strong id="runStatus">待启动</strong>
+        </div>
+        <div class="hero-metric">
+          <span>当前 Case</span>
+          <strong id="currentCase">未选择</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="control-panel card">
+      <div class="control-row">
+        <label for="caseSelect">选择本地 Case</label>
+        <select id="caseSelect"></select>
+      </div>
+      <div class="control-row actions">
+        <button id="refreshCasesBtn">刷新 Case 列表</button>
+        <button id="startRunBtn" class="primary">启动运行</button>
+      </div>
+      <p id="controlMessage" class="hint">正在加载 case 列表...</p>
+    </section>
+
+    <section class="dual-pane">
+      <article class="card flow-pane">
+        <div class="section-head">
+          <h2>Agent 协作泳道图</h2>
+          <span class="section-note">仅保留关键阶段动作，支持回看整次运行过程</span>
+        </div>
+        <div id="agentSwimlane" class="swimlane empty">等待 Agent 事件...</div>
+      </article>
+
+      <article class="card trace-card">
+        <div class="section-head">
+          <h2>Trace Tree</h2>
+          <span class="section-note">自上而下树形展示</span>
+        </div>
+        <div id="traceTree" class="trace-tree empty">等待追溯树事件...</div>
+      </article>
+    </section>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+{
+  "user_input": [
+    "IF aqara_motion_sensor.motion_state() == true THEN light_up() xiaomi_smart_light",
+    "IF aqara_temperature_sensor.reading() > 32 THEN turn_cool_on() xiaomi_air_conditioner",
+    "IF xiaomi_air_quality_sensor_pro.get_air_score() < 75 THEN turn_on() mijia_air_purifier_MAX",
+    "IF xiaomi_volume_sensor.reading() > 47 THEN motor_control(2) babai_curtain"
+  ],
+  "env_profile": [
+    {
+      "name": "xiaomi_air_conditioner",
+      "type": "air_conditioner",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到“制冷模式”、“制热模式”或是“已关闭”",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_cool_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_heat_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "mijia_air_purifier_MAX",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "get_PM2_5()",
+          "description": "获取当前的PM2.5数值",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "turn_on()",
+          "description": "开机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on_screen_light()",
+          "description": "屏幕调至亮光",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off_screen_light()",
+          "description": "关屏幕灯光",
+          "capabilityType": "action"
+        },
+        {
+          "name": "switch_to_sleep_mode()",
+          "description": "调至睡眠模式",
+          "capabilityType": "action"
+        },
+        {
+          "name": "switch_to_auto_mode()",
+          "description": "调至自动模式",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_air_quality_sensor",
+      "type": "air_quality_sensor",
+      "capabilities": [
+        {
+          "name": "get_air_score()",
+          "description": "获取当前空气质量评分，0-100",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_air_quality_sensor_pro",
+      "type": "air_quality_sensor",
+      "capabilities": [
+        {
+          "name": "get_air_score()",
+          "description": "获取当前空气质量评分，0-100",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "connect_to_MIOT()",
+          "description": "连接到MIOT服务器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "reset()",
+          "description": "重置传感器",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "babai_curtain",
+      "type": "curtain",
+      "capabilities": [
+        {
+          "name": "motor_control(position)",
+          "description": "控制窗帘到指定位置，1为打开，2为关闭",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaobai_smart_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "is_lock()",
+          "description": "判断门是否已上锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_unlock()",
+          "description": "判断门是否已解锁",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "is_low_battery()",
+          "description": "判断门的电量是否较低",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "unlock()",
+          "description": "解锁门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "lock()",
+          "description": "锁门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "LG_fire_detector",
+      "type": "fire_detector",
+      "capabilities": [
+        {
+          "name": "is_fire()",
+          "description": "可以获取到当前是否着火，如果着火返回true，否则返回false",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "beep()",
+          "description": "蜂鸣提示当前发生火灾",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_smart_light",
+      "type": "brightness_sensor",
+      "capabilities": [
+        {
+          "name": "light_up()",
+          "description": "增加亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "light_down()",
+          "description": "减少亮度",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_on()",
+          "description": "打开灯",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭灯",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_motion_sensor",
+      "type": "motion_sensor",
+      "capabilities": [
+        {
+          "name": "motion_state()",
+          "description": "检测是否有人经过，如果有人则返回true，无人则返回false",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_temperature_sensor",
+      "type": "temperature_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的温度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_volume_sensor",
+      "type": "volume_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的音量，单位为dB",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

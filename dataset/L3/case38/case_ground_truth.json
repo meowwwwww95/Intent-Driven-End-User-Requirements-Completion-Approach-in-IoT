@@ -1,0 +1,92 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 320 lux",
+        "期望 温度 处于 19 ℃",
+        "期望 声音 处于 50 dB 到 65 dB",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF wotie_brightness_sensor.brightness() < 320 AND aqara_motion_sensor.motion_state() == true THEN brightness_up() wotie_brightness_sensor",
+        "IF wotie_brightness_sensor.brightness() > 320 AND aqara_motion_sensor.motion_state() == true THEN brightness_down() wotie_brightness_sensor",
+        "IF aqara_temperature_sensor.reading() < 19 AND aqara_motion_sensor.motion_state() == true THEN turn_on() alway_heater_pro2",
+        "IF aqara_temperature_sensor.reading() > 19 AND aqara_motion_sensor.motion_state() == true THEN turn_off() alway_heater_pro2",
+        "IF alway_heater_pro2.get_temperature() < 19 AND aqara_motion_sensor.motion_state() == true THEN turn_on() alway_heater_pro2",
+        "IF alway_heater_pro2.get_temperature() > 19 AND aqara_motion_sensor.motion_state() == true THEN turn_off() alway_heater_pro2",
+        "IF aqara_sound_sensor.reading() > 60 AND aqara_motion_sensor.motion_state() == true THEN set_volume_low() xiaomi_television",
+        "IF aqara_sound_sensor.reading() < 40 AND aqara_motion_sensor.motion_state() == true THEN set_volume_high() xiaomi_television",
+        "IF aqara_sound_sensor.reading() > 60 AND aqara_motion_sensor.motion_state() == true THEN turn_low_volume() X-stereo",
+        "IF aqara_sound_sensor.reading() < 40 AND aqara_motion_sensor.motion_state() == true THEN turn_high_volume() X-stereo",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm",
+        "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door",
+        "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() alway_heater_pro2",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_television",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() X-stereo"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 320 lux",
+            "realization_taps": [
+                [
+                    "IF wotie_brightness_sensor.brightness() < 320 AND aqara_motion_sensor.motion_state() == true THEN brightness_up() wotie_brightness_sensor",
+                    "IF wotie_brightness_sensor.brightness() > 320 AND aqara_motion_sensor.motion_state() == true THEN brightness_down() wotie_brightness_sensor"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 19 ℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() < 19 AND aqara_motion_sensor.motion_state() == true THEN turn_on() alway_heater_pro2",
+                    "IF aqara_temperature_sensor.reading() > 19 AND aqara_motion_sensor.motion_state() == true THEN turn_off() alway_heater_pro2"
+                ],
+                [
+                    "IF alway_heater_pro2.get_temperature() < 19 AND aqara_motion_sensor.motion_state() == true THEN turn_on() alway_heater_pro2",
+                    "IF alway_heater_pro2.get_temperature() > 19 AND aqara_motion_sensor.motion_state() == true THEN turn_off() alway_heater_pro2"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 声音 处于 50 dB 到 65 dB",
+            "realization_taps": [
+                [
+                    "IF aqara_sound_sensor.reading() > 60 AND aqara_motion_sensor.motion_state() == true THEN set_volume_low() xiaomi_television",
+                    "IF aqara_sound_sensor.reading() < 40 AND aqara_motion_sensor.motion_state() == true THEN set_volume_high() xiaomi_television"
+                ],
+                [
+                    "IF aqara_sound_sensor.reading() > 60 AND aqara_motion_sensor.motion_state() == true THEN turn_low_volume() X-stereo",
+                    "IF aqara_sound_sensor.reading() < 40 AND aqara_motion_sensor.motion_state() == true THEN turn_high_volume() X-stereo"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() aqara_alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF aqara_smoke_sensor.reading() > 0.05 THEN turn_on() chuangmi_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN light_off() wotie_brightness_sensor",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() alway_heater_pro2",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_television",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() X-stereo"
+                ]
+            ]
+        }
+    ]
+}

@@ -1,0 +1,106 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 261 lux 到 781 lux",
+        "期望 温度 处于 24 ℃ 到 28 ℃",
+        "期望 声音 处于 87 dB",
+        "IF 人不在家 THEN 清洁环境",
+        "如果 人在家 那么 提高环境香味",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF xiaomi_brightness_guard.brightness() < 261 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_up() xiaomi_smart_light",
+        "IF xiaomi_brightness_guard.brightness() > 781 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_down() xiaomi_smart_light",
+        "IF xiaomi_presence_sensor_pro.get_illuminance() < 261 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_up() xiaomi_smart_light",
+        "IF xiaomi_presence_sensor_pro.get_illuminance() > 781 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_down() xiaomi_smart_light",
+        "IF sprite_temperature_humidity_sensor_KD30.get_temperature() > 28 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN switch_cooling_mode() NWT_Internet_Mobile_Air_Conditioner",
+        "IF sprite_temperature_humidity_sensor_KD30.get_temperature() < 24 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN switch_heating_mode() NWT_Internet_Mobile_Air_Conditioner",
+        "IF xiaomi_volume_sensor.reading() > 87 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_low() xiaomi_television",
+        "IF xiaomi_volume_sensor.reading() < 87 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_high() xiaomi_television",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN start_sweep() viomi_vacuum",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() xiaomi_diffuser",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_smart_light",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() NWT_Internet_Mobile_Air_Conditioner",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_television",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_diffuser"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 261 lux 到 781 lux",
+            "realization_taps": [
+                [
+                    "IF xiaomi_brightness_guard.brightness() < 261 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_up() xiaomi_smart_light",
+                    "IF xiaomi_brightness_guard.brightness() > 781 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_down() xiaomi_smart_light"
+                ],
+                [
+                    "IF xiaomi_presence_sensor_pro.get_illuminance() < 261 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_up() xiaomi_smart_light",
+                    "IF xiaomi_presence_sensor_pro.get_illuminance() > 781 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_down() xiaomi_smart_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 24 ℃ 到 28 ℃",
+            "realization_taps": [
+                [
+                    "IF sprite_temperature_humidity_sensor_KD30.get_temperature() > 28 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN switch_cooling_mode() NWT_Internet_Mobile_Air_Conditioner",
+                    "IF sprite_temperature_humidity_sensor_KD30.get_temperature() < 24 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN switch_heating_mode() NWT_Internet_Mobile_Air_Conditioner"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 声音 处于 87 dB",
+            "realization_taps": [
+                [
+                    "IF xiaomi_volume_sensor.reading() > 87 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_low() xiaomi_television",
+                    "IF xiaomi_volume_sensor.reading() < 87 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN set_volume_high() xiaomi_television"
+                ]
+            ]
+        },
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果 人在家 那么 提高环境香味",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() xiaomi_diffuser"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_smart_light",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() NWT_Internet_Mobile_Air_Conditioner",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_television",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_diffuser"
+                ]
+            ]
+        }
+    ]
+}

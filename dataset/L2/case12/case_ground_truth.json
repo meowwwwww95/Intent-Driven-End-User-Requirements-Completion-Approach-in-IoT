@@ -1,0 +1,66 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 460 lux",
+        "期望 温度 处于 23 ℃ 到 27 ℃",
+        "如果发生火灾，那么进行报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF LG_brightness_sensor.get_brightness() > 460 AND aqara_motion_sensor.motion_state() == true THEN light_down() xiaomi_smart_light",
+        "IF LG_brightness_sensor.get_brightness() < 460 AND aqara_motion_sensor.motion_state() == true THEN light_up() xiaomi_smart_light",
+        "IF alway_heater_pro2.get_temperature() > 27 AND aqara_motion_sensor.motion_state() == true THEN turn_off() alway_heater_pro2",
+        "IF alway_heater_pro2.get_temperature() < 23 AND aqara_motion_sensor.motion_state() == true THEN turn_on() alway_heater_pro2",
+        "IF LG_fire_detector.is_fire() == true THEN unlock() xiaobai_smart_door",
+        "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector",
+        "IF aqara_motion_sensor.motion_state() == false THEN light_off() xiaomi_smart_light",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() alway_heater_pro2",
+        "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 460 lux",
+            "realization_taps": [
+                [
+                    "IF LG_brightness_sensor.get_brightness() > 460 AND aqara_motion_sensor.motion_state() == true THEN light_down() xiaomi_smart_light",
+                    "IF LG_brightness_sensor.get_brightness() < 460 AND aqara_motion_sensor.motion_state() == true THEN light_up() xiaomi_smart_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "期望 温度 处于 23 ℃ 到 27 ℃",
+            "realization_taps": [
+                [
+                    "IF alway_heater_pro2.get_temperature() > 27 AND aqara_motion_sensor.motion_state() == true THEN turn_off() alway_heater_pro2",
+                    "IF alway_heater_pro2.get_temperature() < 23 AND aqara_motion_sensor.motion_state() == true THEN turn_on() alway_heater_pro2"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么进行报警",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN beep() LG_fire_detector"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF LG_fire_detector.is_fire() == true THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_motion_sensor.motion_state() == false THEN light_off() xiaomi_smart_light",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() alway_heater_pro2",
+                    "IF aqara_motion_sensor.motion_state() == false THEN turn_off() xiaomi_air_purifier"
+                ]
+            ]
+        }
+    ]
+}

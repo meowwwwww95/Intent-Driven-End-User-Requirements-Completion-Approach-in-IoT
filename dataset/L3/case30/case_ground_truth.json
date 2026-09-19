@@ -1,0 +1,74 @@
+{
+    "user_intent": [
+        "期望 亮度 处于 199 lux 到 328 lux",
+        "如果 人在家 那么 提高环境香味",
+        "油烟浓度 应低于 12 %",
+        "如果发生火灾，那么开始报警",
+        "如果发生火灾，那么打开逃生通道",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF xiaomi_presence_sensor_pro.get_illuminance() < 199 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_up() xiaomi_smart_light",
+        "IF xiaomi_presence_sensor_pro.get_illuminance() > 328 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_down() xiaomi_smart_light",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() xiaomi_diffuser",
+        "IF viomi_hood.reading() >= 0.12 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN power_on() viomi_hood",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm",
+        "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_smart_light",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_diffuser",
+        "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN power_off() viomi_hood"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 亮度 处于 199 lux 到 328 lux",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.get_illuminance() < 199 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_up() xiaomi_smart_light",
+                    "IF xiaomi_presence_sensor_pro.get_illuminance() > 328 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN light_down() xiaomi_smart_light"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果 人在家 那么 提高环境香味",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == true THEN turn_on() xiaomi_diffuser"
+                ]
+            ]
+        },
+        {
+            "user_intent": "油烟浓度 应低于 12 %",
+            "realization_taps": [
+                [
+                    "IF viomi_hood.reading() >= 0.12 AND xiaomi_presence_sensor_pro.is_person_present() == true THEN power_on() viomi_hood"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么开始报警",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN start_alarm() DingZero_Alarm"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果发生火灾，那么打开逃生通道",
+            "realization_taps": [
+                [
+                    "IF zhimi_smoke_sensor.reading() > 0.05 THEN unlock() xiaobai_smart_door"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_smart_light",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN turn_off() xiaomi_diffuser",
+                    "IF xiaomi_presence_sensor_pro.is_person_present() == false THEN power_off() viomi_hood"
+                ]
+            ]
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "user_intent": [
+        "IF 人不在家 THEN 清洁环境",
+        "如果 人在家 那么 提高环境香味",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum",
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_diffuser",
+        "IF aqara_human_sensor.reading() != 人在家 THEN turn_off() xiaomi_diffuser"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "如果 人在家 那么 提高环境香味",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人在家 THEN turn_on() xiaomi_diffuser"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() != 人在家 THEN turn_off() xiaomi_diffuser"
+                ]
+            ]
+        }
+    ]
+}

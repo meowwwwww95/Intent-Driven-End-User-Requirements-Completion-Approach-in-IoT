@@ -1,0 +1,23 @@
+{
+    "user_input": [
+        "IF aqara_smart_lock.stranger_detection() == true THEN remind() aqara_smart_lock"
+    ],
+    "env_profile": [
+        {
+            "name": "aqara_smart_lock",
+            "type": "lock",
+            "capabilities": [
+                {
+                    "name": "stranger_detection()",
+                    "description": "检测门外是否有陌生人靠近，如果有则返回true，否则返回false",
+                    "capabilityType": "trigger"
+                },
+                {
+                    "name": "remind()",
+                    "description": "向用户发送陌生人提醒",
+                    "capabilityType": "action"
+                }
+            ]
+        }
+    ]
+}

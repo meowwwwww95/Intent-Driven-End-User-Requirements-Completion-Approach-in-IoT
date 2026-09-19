@@ -1,0 +1,89 @@
+{
+  "user_input": [
+    "IF carbonDioxide_monitor.reading() >= 0.01 THEN turn_on() oxygen_machine",
+    "IF xiaomi_humidity_sensor.relative_humidity() > 90 THEN turn_on() xiaomi_dehumidifier"
+  ],
+  "env_profile": [
+    {
+      "name": "aqara_alarm",
+      "type": "alarm",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_dehumidifier",
+      "type": "dehumidifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开除湿器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭除湿器",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "xiaomi_humidity_sensor",
+      "type": "humidity_sensor",
+      "capabilities": [
+        {
+          "name": "relative_humidity()",
+          "description": "可以获取到当前的湿度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "carbonDioxide_monitor",
+      "type": "CO2_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "获取当前CO2浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "oxygen_machine",
+      "type": "oxygen_machine",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开启制氧机",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭制氧机",
+          "capabilityType": "action"
+        }
+      ]
+    }
+  ]
+}

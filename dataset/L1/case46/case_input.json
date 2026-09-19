@@ -1,0 +1,81 @@
+{
+  "user_input": [
+    "IF qingping_air_monitor.reading_PM2_5() < 109 THEN turn_on() zhimi_air_fresh"
+  ],
+  "env_profile": [
+    {
+      "name": "zhimi_air_fresh",
+      "type": "air_purifier",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "开启空气净化器以提高空气质量",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭空气净化器",
+          "capabilityType": "action"
+        },
+        {
+          "name": "above_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否高于指定浓度",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "below_target_pm2.5_density(target_pm2.5_density)",
+          "description": "判断当前PM2.5浓度是否低于指定浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "qingping_air_monitor",
+      "type": "air_quality_sensor",
+      "capabilities": [
+        {
+          "name": "reading_PM2_5()",
+          "description": "读取当前PM2.5值，单位ppm",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading_humidity()",
+          "description": "读取当前湿度，单位%",
+          "capabilityType": "trigger"
+        },
+        {
+          "name": "reading_temperature()",
+          "description": "读取当前温度，单位℃",
+          "capabilityType": "trigger"
+        }
+      ]
+    },
+    {
+      "name": "chuangmi_door",
+      "type": "door",
+      "capabilities": [
+        {
+          "name": "turn_on()",
+          "description": "打开门",
+          "capabilityType": "action"
+        },
+        {
+          "name": "turn_off()",
+          "description": "关闭门",
+          "capabilityType": "action"
+        }
+      ]
+    },
+    {
+      "name": "aqara_smoke_sensor",
+      "type": "smoke_sensor",
+      "capabilities": [
+        {
+          "name": "reading()",
+          "description": "可以获取到当前的烟雾浓度",
+          "capabilityType": "trigger"
+        }
+      ]
+    }
+  ]
+}

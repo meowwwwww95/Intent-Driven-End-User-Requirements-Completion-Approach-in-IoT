@@ -1,0 +1,64 @@
+{
+    "user_input": [
+        "IF aqara_human_sensor.reading() == 人在家 THEN turn_to_red() aqara_LED_light"
+    ],
+    "env_profile": [
+        {
+            "name": "aqara_LED_light",
+            "type": "light",
+            "capabilities": [
+                {
+                    "name": "turn_on()",
+                    "description": "开灯",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_off()",
+                    "description": "关灯",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_to_red()",
+                    "description": "将色温调整至红色",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_to_green()",
+                    "description": "将色温调整至绿色",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_to_blue()",
+                    "description": "将色温调整至蓝色",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "turn_to_white()",
+                    "description": "将色温调整至白色",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "brightness_plus()",
+                    "description": "增加亮度",
+                    "capabilityType": "action"
+                },
+                {
+                    "name": "brightness_minus()",
+                    "description": "降低亮度",
+                    "capabilityType": "action"
+                }
+            ]
+        },
+        {
+            "name": "aqara_human_sensor",
+            "type": "human_sensor",
+            "capabilities": [
+                {
+                    "name": "reading()",
+                    "description": "检测屋内是否有人，如果有人则返回'人在家'，无人则返回'人离开'",
+                    "capabilityType": "trigger"
+                }
+            ]
+        }
+    ]
+}

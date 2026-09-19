@@ -1,0 +1,28 @@
+{
+    "user_intent": [
+        "IF 人不在家 THEN 清洁环境",
+        "水质 应高于 73 Score"
+    ],
+    "standard_taps": [
+        "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum",
+        "IF yunmi_water_purifier.tds_in() < 73 THEN filter_water() yunmi_water_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "水质 应高于 73 Score",
+            "realization_taps": [
+                [
+                    "IF yunmi_water_purifier.tds_in() < 73 THEN filter_water() yunmi_water_purifier"
+                ]
+            ]
+        }
+    ]
+}

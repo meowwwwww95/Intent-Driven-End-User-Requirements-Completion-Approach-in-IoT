@@ -1,0 +1,18 @@
+{
+    "user_intent": [
+        "PM2.5浓度 应 低于 75"
+    ],
+    "standard_taps": [
+        "IF qingping_air_monitor.reading_PM2_5() < 75 THEN turn_on() xiaomi_air_purifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "PM2.5浓度 应 低于 75",
+            "realization_taps": [
+                [
+                    "IF qingping_air_monitor.reading_PM2_5() < 75 THEN turn_on() xiaomi_air_purifier"
+                ]
+            ]
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "user_intent": [
+        "期望 湿度 处于 55 %",
+        "IF 人不在家 THEN 清洁环境",
+        "人离开时，关闭所有影音、照明、环境控制及厨电类电器"
+    ],
+    "standard_taps": [
+        "IF xiaomi_humidity_sensor.relative_humidity() < 55 AND aqara_human_sensor.reading() != 人离开 THEN turn_off() xiaomi_dehumidifier",
+        "IF xiaomi_humidity_sensor.relative_humidity() > 55 AND aqara_human_sensor.reading() != 人离开 THEN turn_on() xiaomi_dehumidifier",
+        "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum",
+        "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_dehumidifier"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 湿度 处于 55 %",
+            "realization_taps": [
+                [
+                    "IF xiaomi_humidity_sensor.relative_humidity() < 55 AND aqara_human_sensor.reading() != 人离开 THEN turn_off() xiaomi_dehumidifier",
+                    "IF xiaomi_humidity_sensor.relative_humidity() > 55 AND aqara_human_sensor.reading() != 人离开 THEN turn_on() xiaomi_dehumidifier"
+                ]
+            ]
+        },
+        {
+            "user_intent": "IF 人不在家 THEN 清洁环境",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() != 人在家 THEN start_sweep() viomi_vacuum"
+                ]
+            ]
+        },
+        {
+            "user_intent": "人离开时，关闭所有影音、照明、环境控制及厨电类电器",
+            "realization_taps": [
+                [
+                    "IF aqara_human_sensor.reading() == 人离开 THEN turn_off() xiaomi_dehumidifier"
+                ]
+            ]
+        }
+    ]
+}

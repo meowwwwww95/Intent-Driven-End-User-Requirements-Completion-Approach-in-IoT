@@ -1,0 +1,20 @@
+{
+    "user_intent": [
+        "期望 温度 处于 32 ℃"
+    ],
+    "standard_taps": [
+        "IF aqara_temperature_sensor.reading() > 32 THEN turn_cool_on() xiaomi_air_conditioner",
+        "IF aqara_temperature_sensor.reading() < 32 THEN turn_heat_on() xiaomi_air_conditioner"
+    ],
+    "mapping_relationship": [
+        {
+            "user_intent": "期望 温度 处于 32 ℃",
+            "realization_taps": [
+                [
+                    "IF aqara_temperature_sensor.reading() > 32 THEN turn_cool_on() xiaomi_air_conditioner",
+                    "IF aqara_temperature_sensor.reading() < 32 THEN turn_heat_on() xiaomi_air_conditioner"
+                ]
+            ]
+        }
+    ]
+}
