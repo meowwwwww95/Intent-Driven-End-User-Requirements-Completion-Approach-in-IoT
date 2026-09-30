@@ -153,3 +153,14 @@ python evaluator/batch_evaluator.py ./output/L5 --cases "6" --workers 8
 ## 许可证
 
 本项目基于 [MIT License](LICENSE) 开源。
+
+## 引用
+非常欢迎引用我们的工作：
+```
+@article{li2026exploring,
+  title={Exploring and Complementing End Users' Requirements in IoT enabled System},
+  author={Li, Haotian and Chen, Xiaohong and Jin, Zhi and Xiao, Shuyuan and Wang, Chenxu and Yan, Haoxiang and Chen, Xiaoyi},
+  journal={arXiv preprint arXiv:2606.10598},
+  year={2026}
+}
+```
